@@ -38,20 +38,20 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="form-group">
                     <?= $form->field($model, 'email')->textInput() ?>
                 </div>
-                <div class="form-group">
+                <div class="form-group ">
                     <?= $form->field($model, 'phone')->textInput() ?>
+                </div>
+                <div class="form-group">
+                    <?= $form->field($model, 'verifyCode')->widget(\yii\captcha\Captcha::className(), [
+                        'captchaAction' => ['/captcha'],
+                        'template' => '<div class="row"><div class="col-sm-6">{image}</div><div class="col-sm-6">{input}</div></div>'
+                    ]) ?>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <?= $form->field($model, 'message')->textarea(['rows' => 10]) ?>
                 </div>
-            </div>
-            <div class="col-sm-6 contact-form-captcha">
-                <?= $form->field($model, 'verifyCode')->widget(\yii\captcha\Captcha::className(), [
-                    'captchaAction' => ['/captcha'],
-                    'template' => '<div class="row"><div class="col-sm-6">{image}</div><div class="col-sm-6">{input}</div></div>'
-                ]) ?>
             </div>
         </div>
         <?= Html::submitButton(Yii::t('contact', 'Send'), [
