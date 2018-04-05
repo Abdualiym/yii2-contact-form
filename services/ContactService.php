@@ -21,11 +21,8 @@ class ContactService
 
     public function send(ContactForm $form)
     {
-
-
         $arr_message = [];
-        if(!empty($form->region) && isset($form->region)){ $arr_message['region'] = "<br>".Yii::t('contact', 'Region').": ".$form->region;}else{$arr_message['region'] =''; }
-        if(!empty($form->preferred_answer) && isset($form->preferred_answer)){ $arr_message['preferred_answer'] = "<br>".Yii::t('contact', 'Preferred answer').": ".$form->preferred_answer;}else{$arr_message['preferred_answer'] =''; }
+        if(!empty($form->region) && isset($form->region)){ $arr_message['region'] = "<br>".Yii::t('contact', 'Address').": ".$form->region;}else{$arr_message['region'] =''; }
         if(!empty($form->subject) && isset($form->subject)){ $arr_message['subject'] = "<br>".Yii::t('contact', 'Subject').": ".$form->subject;}else{$arr_message['subject'] =''; }
         if(!empty($form->name) && isset($form->name)){ $arr_message['name'] = "<br>".Yii::t('contact', 'Name').": ".$form->name;}else{$arr_message['name'] =''; }
         if(!empty($form->phone) && isset($form->phone)){ $arr_message['phone'] = "<br>".Yii::t('contact', 'Phone').": ".$form->phone;}else{$arr_message['phone'] =''; }

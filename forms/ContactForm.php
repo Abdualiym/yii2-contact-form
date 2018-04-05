@@ -13,7 +13,6 @@ class ContactForm extends Model
     public $email;
     public $address;
     public $subject;
-    public $preferredAnswer;
     public $message;
     public $file;
     public $verifyCode;
@@ -26,8 +25,6 @@ class ContactForm extends Model
             [['phone'], 'match', 'pattern' => '#^[\+]?[0-9]{12}$#'],
             ['email', 'email'],
             [['address', 'message'], 'string'],
-            [['preferredAnswer'], 'integer'],
-            [['preferredAnswer'], 'default', 'value' => 1],
             [
                 'file', 'file', 'skipOnEmpty' => true, // file NOT REQUIRED
                 'extensions' => ['zip', 'rar', 'pdf'],
@@ -47,7 +44,6 @@ class ContactForm extends Model
             'phone' => Yii::t('contact', 'CONTACT TELEPHONE NUMBER'),
             'email' => Yii::t('contact', 'E-MAIL ADDRESS'),
             'subject' => Yii::t('contact', 'ADDRESS SUBJECT'),
-            'preferredAnswer' => Yii::t('contact', 'HOW DO YOU WANT TO RECEIVE AN ANSWER'),
             'message' => Yii::t('contact', 'MESSAGE TEXT'),
             'file' => Yii::t('contact', 'ATTACH THE FILE'),
             'verifyCode' => Yii::t('contact', 'PROTECTION FROM AUTOMATIC MESSAGES')

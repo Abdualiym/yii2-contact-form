@@ -18,7 +18,7 @@ class ContactMessagesSearch extends ContactMessages
     public function rules()
     {
         return [
-            [['id', 'created_at', 'updated_at', 'status', 'preferredAnswer'], 'integer'],
+            [['id', 'created_at', 'updated_at', 'status'], 'integer'],
         ];
     }
 
@@ -61,8 +61,7 @@ class ContactMessagesSearch extends ContactMessages
             'id' => $this->id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            'status' => $this->status,
-            'preferredAnswer' => $this->preferredAnswer
+            'status' => $this->status
         ]);
 
         return $dataProvider;

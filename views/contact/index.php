@@ -19,6 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?//= $form->field($model, 'region')->dropDownList(Contact::getRegions()) ?>
         <?//= $form->field($model, 'subject')->dropDownList(Contact::getSubjects()) ?>
  */
+
 ?>
 <div class="content">
     <div class="section-title"><?= Html::encode($this->title) ?></div>
@@ -62,3 +63,11 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
 </div>
+
+<?php ob_start(); ?>
+<script type="text/javascript" charset="utf-8">
+    document.getElementById("tasix-verifycode-image").setAttribute("title", "<?= Yii::t('app', 'Change image') ?>");
+    // });
+</script>
+<?php $this->registerJs(preg_replace('~^\s*<script.*>|</script>\s*$~ U', '', ob_get_clean())) ?>
+

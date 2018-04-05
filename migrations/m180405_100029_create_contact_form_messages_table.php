@@ -25,7 +25,6 @@ class m180405_100029_create_contact_form_messages_table extends Migration
             'created_at' => $this->integer()->unsigned()->notNull(),
             'updated_at' => $this->integer()->unsigned()->notNull(),
             'status' => $this->integer()->notNull(),
-            'preferred_answer' => $this->integer()->notNull()->defaultValue(1),
             'file' => $this->string(),
         ], $tableOptions);
     }
