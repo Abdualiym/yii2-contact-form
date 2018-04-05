@@ -1,0 +1,35 @@
+{
+  "name": "abdualiym/yii2-contact-form",
+  "description": "Yii2 contacts extension",
+  "keywords": [
+    "yii2",
+    "framework",
+    "advanced",
+    "contacts"
+  ],
+  "homepage": "http://www.infosystems.uz/",
+  "type": "yii2-extension",
+  "license": "BSD-3-Clause",
+  "authors": [
+    {
+      "name": "Olimjon Aripdjanov",
+      "email": "olimjon@infosystems.uz",
+      "homepage": "http://infosystems.uz"
+    }
+  ],
+  "require": {
+    "yiisoft/yii2": "~2.0",
+    "abdualiym/yii2-language-class": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "abdualiym\\contactform\\": ""
+    }
+  },
+  "extra": {
+    "bootstrap": "abdualiym\\contactform\\Bootstrap"
+  }
+}
