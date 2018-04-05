@@ -8,7 +8,7 @@ use Yii;
 use yii\base\ViewContextInterface;
 use yii\web\Controller;
 
-/**
+/*
  * Default controller for the `contact` module
  */
 class ContactController extends Controller implements ViewContextInterface
