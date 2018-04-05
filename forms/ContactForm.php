@@ -11,23 +11,23 @@ class ContactForm extends Model
     public $name;
     public $phone;
     public $email;
-    public $region;
+    public $address;
     public $subject;
     public $preferredAnswer;
-    public $text;
+    public $message;
     public $file;
     public $verifyCode;
 
     public function rules()
     {
         return [
-            [['name', 'phone', 'email', 'region', 'subject', 'text', 'verifyCode'], 'required'],
-            [['name', 'phone'], 'string', 'max' => 255],
+            [['name', 'phone', 'email', 'message', 'verifyCode'], 'required'],
+            [['name', 'phone', 'subject'], 'string', 'max' => 255],
             [['phone'], 'match', 'pattern' => '#^[\+]?[0-9]{12}$#'],
             ['email', 'email'],
-            [['region', 'subject', 'preferredAnswer'], 'integer'],
+            [['address', 'message'], 'string'],
+            [['preferredAnswer'], 'integer'],
             [['preferredAnswer'], 'default', 'value' => 1],
-            ['text', 'string'],
             [
                 'file', 'file', 'skipOnEmpty' => true, // file NOT REQUIRED
                 'extensions' => ['zip', 'rar', 'pdf'],
@@ -43,12 +43,12 @@ class ContactForm extends Model
     {
         return [
             'name' => Yii::t('contact', 'NAME'),
-            'region' => Yii::t('contact', 'REGION'),
+            'address' => Yii::t('contact', 'REGION'),
             'phone' => Yii::t('contact', 'CONTACT TELEPHONE NUMBER'),
             'email' => Yii::t('contact', 'E-MAIL ADDRESS'),
             'subject' => Yii::t('contact', 'ADDRESS SUBJECT'),
             'preferredAnswer' => Yii::t('contact', 'HOW DO YOU WANT TO RECEIVE AN ANSWER'),
-            'text' => Yii::t('contact', 'MESSAGE TEXT'),
+            'message' => Yii::t('contact', 'MESSAGE TEXT'),
             'file' => Yii::t('contact', 'ATTACH THE FILE'),
             'verifyCode' => Yii::t('contact', 'PROTECTION FROM AUTOMATIC MESSAGES')
         ];

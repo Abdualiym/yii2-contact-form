@@ -19,9 +19,26 @@ php yii migrate/up --migrationPath=@vendor/abdualiym/yii2-contacts/migrations
 - add to common config file:
 ```php
 'components' => [
-    'contact' => [
+    'contactform' => [
         'class' => 'abdualiym\contactform\Module',
         'developmentEmail' => 'yourDev@email.com',
     ],
 ],
+```
+- add to common config file:
+```php
+'mailer' => [
+            'class' => 'yii\swiftmailer\Mailer',
+            'viewPath' => '@common/mail',
+            'transport' => [
+                'class' => 'Swift_SmtpTransport',
+                'host' => 'smtp.yandex.ru',
+                'username' => 'login @yandex.ru',
+                'password' => '*****',
+                'port' => '465',
+                'encryption' => 'ssl', // у яндекса SSL
+            ],
+
+            'useFileTransport' => false, // будем отправлять реальные сообщения, а не в файл
+        ],
 ```

@@ -20,7 +20,7 @@ class Bootstrap implements BootstrapInterface
             [
                 'graphs'=>'/site/graphs',
                 'captcha'=>'/site/captcha',
-                'feedback' => '/contact/contact/index',
+                'feedback' => '/contactform/contact/index',
             ],
             false
         );
@@ -29,7 +29,7 @@ class Bootstrap implements BootstrapInterface
         if (!isset($app->i18n->translations['contact']) && !isset($app->i18n->translations['contact*'])) {
             $app->i18n->translations['contact'] = [
                 'class' => 'yii\i18n\PhpMessageSource',
-                'basePath' => '@abdualiym/contacts/messages',
+                'basePath' => '@abdualiym/contactform/messages',
                 'sourceLanguage' => 'en',
                 'forceTranslation' => true,
             ];

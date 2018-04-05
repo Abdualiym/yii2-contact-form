@@ -23,7 +23,7 @@ class ContactMessages extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'contact_messages';
+        return 'contact_form_messages';
     }
 
     /**
@@ -47,8 +47,8 @@ class ContactMessages extends \yii\db\ActiveRecord
             'created_at' => Yii::t('contact', 'Created At'),
             'updated_at' => Yii::t('contact', 'Updated At'),
             'status' => Yii::t('contact', 'Статус'),
-            'region_id' => Yii::t('contact', 'REGION'),
-            'subject_id' => Yii::t('contact', 'ADDRESS SUBJECT'),
+            'address' => Yii::t('contact', 'Address'),
+            'subject' => Yii::t('contact', 'Subject'),
         ];
     }
 

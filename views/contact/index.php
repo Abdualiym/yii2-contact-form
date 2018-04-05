@@ -10,61 +10,55 @@ use abdualiym\contactform\entities\Contact;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 
-$this->title = Yii::t('contact', 'Feedback');
+$this->title = Yii::t('contact', 'Contacts');
 $this->params['breadcrumbs'][] = $this->title;
-
+/*
+ * ignor
+ *
+ * <?//= $form->field($model, 'file')->fileInput() ?>
+        <?//= $form->field($model, 'region')->dropDownList(Contact::getRegions()) ?>
+        <?//= $form->field($model, 'subject')->dropDownList(Contact::getSubjects()) ?>
+ */
 ?>
-<div class="site-contact">
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="content">
+    <div class="section-title"><?= Html::encode($this->title) ?></div>
+    <br><?= \common\widgets\Alert::widget() ?>
+    <address><a class="contact" href="tel:+998710000000"><i class="icon-phone"></i>+998 (71) 000 00 00</a><a class="contact" href="mailto:info@infosystems.uz"><i class="icon-mail"></i>info@infosystems.uz</a></address>
+    <div id="map"></div>
+    <div class="contact-form">
+        <div class="section-title"><?= Yii::t('contact', 'Feedback'); ?></div>
 
-    <?= Yii::t('contact', '&nbsp;') ?>
+        <?php $form = ActiveForm::begin(['id' => 'callbackForm']); ?>
 
-    <?= \common\widgets\Alert::widget() ?>
-
-    <p style="color: red;">* - <?= Yii::t('contact', 'REQUIRED FIELDS') ?></p>
-
-    <div class="row">
-
-        <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
-        <div class="col-sm-6">
-            <?= $form->field($model, 'subject')->dropDownList(Contact::getSubjects()) ?>
-
-            <?= $form->field($model, 'name')->textInput() ?>
-
-            <?= $form->field($model, 'region')->dropDownList(Contact::getRegions()) ?>
-        </div>
-        <div class="col-sm-6">
-
-            <?= $form->field($model, 'phone')->textInput() ?>
-
-            <?= $form->field($model, 'email')->textInput() ?>
-
-            <?php //= $form->field($model, 'preferredAnswer')->dropDownList(Contact::getPreferredAnswers()) ?>
-        </div>
-        <div class="col-sm-12 contact-form-text">
-            <?= $form->field($model, 'text')->textarea(['rows' => 10]) ?>
-        </div>
-        <div class="col-sm-6 contact-form-captcha">
-            <?= $form->field($model, 'verifyCode')->widget(\yii\captcha\Captcha::className(), [
-                'captchaAction' => ['/captcha'],
-                'template' => '<div class="row"><div class="col-sm-6">{image}</div><div class="col-sm-6">{input}</div></div>'
-            ]) ?>
-        </div>
-        <div class="col-sm-6">
-            <?= $form->field($model, 'file')->fileInput() ?>
-        </div>
-
-        <div class="col-sm-12">
-            <div class="form-group">
-                <?= Html::submitButton(Yii::t('contact', 'Send'), [
-                    'class' => 'btn btn-primary',
-                    'name' => 'contact-button'
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <?= $form->field($model, 'name')->textInput() ?>
+                </div>
+                <div class="form-group">
+                    <?= $form->field($model, 'email')->textInput() ?>
+                </div>
+                <div class="form-group">
+                    <?= $form->field($model, 'phone')->textInput() ?>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <?= $form->field($model, 'message')->textarea(['rows' => 10]) ?>
+                </div>
+            </div>
+            <div class="col-sm-6 contact-form-captcha">
+                <?= $form->field($model, 'verifyCode')->widget(\yii\captcha\Captcha::className(), [
+                    'captchaAction' => ['/captcha'],
+                    'template' => '<div class="row"><div class="col-sm-6">{image}</div><div class="col-sm-6">{input}</div></div>'
                 ]) ?>
             </div>
         </div>
-
+        <?= Html::submitButton(Yii::t('contact', 'Send'), [
+            'class' => 'btn btn-primary',
+            'name' => 'contact-button'
+        ]) ?>
         <?php ActiveForm::end(); ?>
-
     </div>
 
 </div>

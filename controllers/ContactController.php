@@ -6,9 +6,10 @@ use abdualiym\contactform\forms\ContactForm;
 use abdualiym\contactform\services\ContactService;
 use Yii;
 use yii\base\ViewContextInterface;
+use yii\helpers\VarDumper;
 use yii\web\Controller;
 
-/*
+/**
  * Default controller for the `contact` module
  */
 class ContactController extends Controller implements ViewContextInterface
@@ -24,7 +25,7 @@ class ContactController extends Controller implements ViewContextInterface
 
     public function getViewPath()
     {
-        return Yii::getAlias('@vendor/abdualiym/yii2-contacts/views/contact');
+        return Yii::getAlias('@vendor/abdualiym/yii2-contact-form/views/contact');
     }
 
 
@@ -32,6 +33,7 @@ class ContactController extends Controller implements ViewContextInterface
     {
         $form = new ContactForm();
         if ($form->load(Yii::$app->request->post()) && $form->validate()) {
+
             try {
                 $this->service->send($form);
                 Yii::$app->session->setFlash('success', Yii::t('contact', 'Thank you! Your application is accepted!'));
@@ -41,6 +43,7 @@ class ContactController extends Controller implements ViewContextInterface
             }
 //            return $this->refresh();
         }
+
 
         return $this->render('index', [
             'model' => $form,
@@ -52,7 +55,7 @@ class ContactController extends Controller implements ViewContextInterface
     {
         $m = Yii::$app->mailer->compose()
             ->setTo($mail)
-            ->setFrom('noreply@infosystems.uz')
+            ->setFrom(Yii::$app->controller->module->developmentEmail)//email connected to server
             ->setSubject('Test' . date('d-m-Y, H:i:s'))
             ->setHtmlBody('Тест');
 

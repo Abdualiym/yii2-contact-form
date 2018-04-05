@@ -30,7 +30,7 @@ class ContactMessagesController extends Controller implements ViewContextInterfa
 
     public function getViewPath()
     {
-        return Yii::getAlias('@vendor/abdualiym/yii2-contacts/views/contact-messages');
+        return Yii::getAlias('@vendor/abdualiym/yii2-contact-form/views/contact-messages');
     }
 
 

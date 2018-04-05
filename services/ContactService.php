@@ -21,12 +21,28 @@ class ContactService
 
     public function send(ContactForm $form)
     {
-        // send to region
+
+
+        $arr_message = [];
+        if(!empty($form->region) && isset($form->region)){ $arr_message['region'] = "<br>".Yii::t('contact', 'Region').": ".$form->region;}else{$arr_message['region'] =''; }
+        if(!empty($form->preferred_answer) && isset($form->preferred_answer)){ $arr_message['preferred_answer'] = "<br>".Yii::t('contact', 'Preferred answer').": ".$form->preferred_answer;}else{$arr_message['preferred_answer'] =''; }
+        if(!empty($form->subject) && isset($form->subject)){ $arr_message['subject'] = "<br>".Yii::t('contact', 'Subject').": ".$form->subject;}else{$arr_message['subject'] =''; }
+        if(!empty($form->name) && isset($form->name)){ $arr_message['name'] = "<br>".Yii::t('contact', 'Name').": ".$form->name;}else{$arr_message['name'] =''; }
+        if(!empty($form->phone) && isset($form->phone)){ $arr_message['phone'] = "<br>".Yii::t('contact', 'Phone').": ".$form->phone;}else{$arr_message['phone'] =''; }
+        if(!empty($form->email) && isset($form->email)){ $arr_message['email'] = "<br>".Yii::t('contact', 'Email').": ".$form->email;}else{$arr_message['email'] =''; }
+        if(!empty($form->message) && isset($form->message)){ $arr_message['message'] = "<br>".Yii::t('contact', 'Message').": ".$form->message;}else{$arr_message['message'] =''; }
+            $arr_message_all[] = $arr_message;
         $m = $this->mailer->compose()
-            ->setTo(Contact::getEmailBy($form->region, $form->subject))
-            ->setFrom(['noreply@infosystems.uz' => 'AK "Uztelecom" contact form'])
-            ->setSubject(Contact::getSubjects($form->subject))
-            ->setHtmlBody('Имя: ' . $form->name . '<br>Регион: ' . Contact::getRegions($form->region) . '<br>Телефон: ' . $form->phone . '<br>Email: ' . $form->email . '<br>Текст: ' . $form->text);
+            ->setTo(Yii::$app->controller->module->developmentEmail)
+            ->setFrom(Yii::$app->controller->module->developmentEmail)
+            ->setSubject('te2')
+            ->setHtmlBody('
+            '.$arr_message['region'].'
+            '.$arr_message['subject'].'
+            '.$arr_message['name'].'
+            '.$arr_message['phone'].'
+            '.$arr_message['email'].'
+            '.$arr_message['message'].'');
 
         if ($form->file) {
             $fullname = Yii::getAlias('@frontend/web/app-temp/') . Yii::$app->formatter->asTime(time(), "php:d-m-Y_H-i-s") . ' - fayl.' . $form->file->extension;
@@ -38,33 +54,32 @@ class ContactService
             throw new \RuntimeException(Yii::t('contact', 'Sending message to branch email error.'));
         }
 
-        // save to DB
-        $message = new ContactMessages();
-        $message->status = 1;
-        $message->region_id = $form->region;
-        $message->subject_id = $form->subject;
-        $message->name = $form->name;
-        $message->phone = $form->phone;
-        $message->email = $form->email;
-        $message->preferred_answer = $form->preferredAnswer;
-        $message->text = $form->text;
-        $message->file = $fullname ?? '';
-        if ($message->save()) {
 
-            // Send To User
-            $m = $this->mailer->compose()
-                ->setTo($form->email)
-                ->setFrom(['noreply@uztelecom.uz' => 'AK "Uztelecom" contact form'])
-                ->setSubject(Contact::getSubjects($form->subject))
-                ->setHtmlBody('<div style="text-align: center;"><p>Спасибо за Ваше обращение!</p>
-                <p>Регистрационный номер обращения ' . $message->id . '.</p>
-            <p>Обращение будет рассмотрено в сроки, установленные Законом Республики Узбекистан</p> 
-<p>«Об обращениях физических и юридических лиц».</p>
-<p>О статусе рассмотрения Вашего обращения можете узнать, используя форму обратной связи на сайте Компании</p>');
+               $message = new ContactMessages();
+               $message->status = 1;
+               $message->name = $form->name;
+               $message->phone = $form->phone;
+               $message->email = $form->email;
+               $message->message = $form->message;
+               //$message->file = $fullname ?? '';
 
-            if (!$m->send()) {
-                throw new \RuntimeException(Yii::t('contact', 'Sending message to user email error.'));
-            }
-        }
+               if ($message->save()) {
+
+                   if($form->subject){$subject = $form->subject;
+                   }else{
+                       $subject = $form->name;
+                   }
+                   $content = Yii::t('contact', 'Thank you for your message! Your message will be considered soon.');
+                   // Send To User
+                   $m2 = $this->mailer->compose()
+                       ->setTo($form->email)
+                       ->setFrom(Yii::$app->controller->module->developmentEmail)
+                       ->setSubject($subject)
+                       ->setHtmlBody($content);
+
+                   if (!$m2->send()) {
+                       throw new \RuntimeException(Yii::t('contact', 'Sending message to user email error.'));
+                   }
+               }
     }
 }
