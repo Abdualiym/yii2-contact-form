@@ -25,6 +25,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => '№',
             ],
             [
+                'attribute' => 'status',
+                'label' => Yii::t('contactform', 'Status'),
+            ],
+            [
                 'attribute' => 'name',
                 'label' => Yii::t('contactform', 'Name'),
             ],
@@ -40,10 +44,19 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'subject',
                 'label' => Yii::t('contactform', 'Subject'),
             ],
-            [
+            /*[
                 'attribute' => 'address',
                 'label' => Yii::t('contactform', 'Address'),
             ],
+            [
+                'attribute' => 'file',
+                'label' => Yii::t('contactform', 'File'),
+            ],
+            [
+                'attribute' => 'file',
+                'label' => Yii::t('contactform', 'File'),
+            ],
+            */
             [
                 'attribute' => 'message.ntext',
                 'label' => Yii::t('contactform', 'Message'),

@@ -6,6 +6,7 @@ return [
     'Contacts' => 'Kontaktlar',
     'Feedback' => 'Qayta aloqa',
     '&nbsp;' => '',
+    'Status' => 'Holati',
     'Thank you! Your application is accepted!' => 'Rahmat! Murojaatngiz qabul qilindi!',
     'There was an error sending your message.' => 'Sizning murojaatingizni yuborishda hatolik yuz berdi.',
     'Sending message to user email error.' => 'Murojaat haqida foydalanuvchiga javob yuborishda hatolik yuz berdi.',
