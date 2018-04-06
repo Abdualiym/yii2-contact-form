@@ -40,12 +40,12 @@ class ContactForm extends Model
     {
         return [
             'name' => Yii::t('contactform', 'Name'),
-            'address' => Yii::t('contactform', 'Addresscontact telephone number'),
-            'phone' => Yii::t('contactform', 'Contact telephone number'),
+            'address' => Yii::t('contactform', 'Address'),
+            'phone' => Yii::t('contactform', 'Phone'),
             'email' => Yii::t('contactform', 'E-mail address'),
             'subject' => Yii::t('contactform', 'Subject'),
             'message' => Yii::t('contactform', 'Message text'),
-            'file' => Yii::t('contactform', 'Attach the file'),
+            'file' => Yii::t('contactform', 'File'),
             'verifyCode' => Yii::t('contactform', 'Protection from automatic messages')
         ];
     }

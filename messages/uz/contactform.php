@@ -40,7 +40,7 @@ return [
     'City of Tashkent' => 'Toshkent shahri',
     // form labels
     'Name' => 'FIO',
-    'Phone' => 'Телефон',
+    'Phone' => 'Telefon',
     'Address' => 'Manzil',
     'Subject' => 'Murojaat mavzusi',
     'Contact telephone number' => 'Muloqot uchun tеlеfon',

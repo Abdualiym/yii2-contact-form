@@ -34,13 +34,13 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <?= $form->field($model, 'name')->textInput() ?>
+                    <?= $form->field($model, 'name')->textInput(['id' => 'name']) ?>
                 </div>
                 <div class="form-group">
-                    <?= $form->field($model, 'email')->textInput() ?>
+                    <?= $form->field($model, 'email')->textInput(['id' => 'email']) ?>
                 </div>
                 <div class="form-group ">
-                    <?= $form->field($model, 'phone')->textInput() ?>
+                    <?= $form->field($model, 'phone')->textInput(['id' => 'tel', 'class'=> 'form-control phone_mask']) ?>
                 </div>
                 <div class="form-group">
                     <?= $form->field($model, 'verifyCode')->widget(\yii\captcha\Captcha::className(), [
@@ -51,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <?= $form->field($model, 'message')->textarea(['rows' => 10]) ?>
+                    <?= $form->field($model, 'message')->textarea(['rows' => 10, 'id'=> 'message']) ?>
                 </div>
             </div>
         </div>
