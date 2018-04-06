@@ -12,8 +12,8 @@ class Contact extends Model
     public static function getPreferredAnswers($id = null)
     {
         $array = [
-            1 => Yii::t('contact', 'By email'),
-            2 => Yii::t('contact', 'By phone')
+            1 => Yii::t('contactform', 'By email'),
+            2 => Yii::t('contactform', 'By phone')
         ];
         return $id ? ArrayHelper::getValue($array, $id, 1) : $array;
     }
@@ -21,8 +21,8 @@ class Contact extends Model
     public static function getSubjects($id = null)
     {
         $array = [
-            1 => Yii::t('contact', 'Internet / Interactive TV for home and office'),
-            2 => Yii::t('contact', 'Telephone connection for home and office')
+            1 => Yii::t('contactform', 'Internet / Interactive TV for home and office'),
+            2 => Yii::t('contactform', 'Telephone connection for home and office')
         ];
         return $id ? ArrayHelper::getValue($array, $id, 1) : $array;
     }
@@ -30,24 +30,24 @@ class Contact extends Model
     public static function getRegions($id = null)
     {
         $array = [
-            18 => Yii::t('contact', 'City of Tashkent'),
-            1 => Yii::t('contact', 'Karakalpakstan Republic'),
-            2 => Yii::t('contact', 'Andijan region'),
-            3 => Yii::t('contact', 'Bukhara region'),
-            4 => Yii::t('contact', 'Djizak region'),
-            5 => Yii::t('contact', 'Djizak'),
-            6 => Yii::t('contact', 'Kashkadarya region'),
-            7 => Yii::t('contact', 'Karshi'),
-            8 => Yii::t('contact', 'Navoi region'),
-            9 => Yii::t('contact', 'Namangan region'),
-            10 => Yii::t('contact', 'Samarkand region'),
-            11 => Yii::t('contact', 'Samarkand'),
-            12 => Yii::t('contact', 'Surkhandarya region'),
-            13 => Yii::t('contact', 'Termez'),
-            14 => Yii::t('contact', 'Syrdarya region'),
-            15 => Yii::t('contact', 'Tashkent region'),
-            16 => Yii::t('contact', 'Ferghana region'),
-            17 => Yii::t('contact', 'Khorezm region'),
+            18 => Yii::t('contactform', 'City of Tashkent'),
+            1 => Yii::t('contactform', 'Karakalpakstan Republic'),
+            2 => Yii::t('contactform', 'Andijan region'),
+            3 => Yii::t('contactform', 'Bukhara region'),
+            4 => Yii::t('contactform', 'Djizak region'),
+            5 => Yii::t('contactform', 'Djizak'),
+            6 => Yii::t('contactform', 'Kashkadarya region'),
+            7 => Yii::t('contactform', 'Karshi'),
+            8 => Yii::t('contactform', 'Navoi region'),
+            9 => Yii::t('contactform', 'Namangan region'),
+            10 => Yii::t('contactform', 'Samarkand region'),
+            11 => Yii::t('contactform', 'Samarkand'),
+            12 => Yii::t('contactform', 'Surkhandarya region'),
+            13 => Yii::t('contactform', 'Termez'),
+            14 => Yii::t('contactform', 'Syrdarya region'),
+            15 => Yii::t('contactform', 'Tashkent region'),
+            16 => Yii::t('contactform', 'Ferghana region'),
+            17 => Yii::t('contactform', 'Khorezm region'),
         ];
         return $id ? ArrayHelper::getValue($array, $id, 1) : $array;
     }

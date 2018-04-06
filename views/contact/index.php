@@ -10,7 +10,7 @@ use abdualiym\contactform\entities\Contact;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 
-$this->title = Yii::t('contact', 'Contacts');
+$this->title = Yii::t('contactform', 'Contacts');
 $this->params['breadcrumbs'][] = $this->title;
 /*
  * ignor
@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <address><a class="contact" href="tel:+998710000000"><i class="icon-phone"></i>+998 (71) 000 00 00</a><a class="contact" href="mailto:info@infosystems.uz"><i class="icon-mail"></i>info@infosystems.uz</a></address>
     <div id="map"></div>
     <div class="contact-form">
-        <div class="section-title"><?= Yii::t('contact', 'Feedback'); ?></div>
+        <div class="section-title"><?= Yii::t('contactform', 'Feedback'); ?></div>
 
         <?php $form = ActiveForm::begin(['id' => 'callbackForm']); ?>
 
@@ -55,7 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
             </div>
         </div>
-        <?= Html::submitButton(Yii::t('contact', 'Send'), [
+        <?= Html::submitButton(Yii::t('contactform', 'Send'), [
             'class' => 'btn btn-primary',
             'name' => 'contact-button'
         ]) ?>

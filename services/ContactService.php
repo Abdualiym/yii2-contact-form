@@ -22,12 +22,12 @@ class ContactService
     public function send(ContactForm $form)
     {
         $arr_message = [];
-        if(!empty($form->region) && isset($form->region)){ $arr_message['region'] = "<br>".Yii::t('contact', 'Address').": ".$form->region;}else{$arr_message['region'] =''; }
-        if(!empty($form->subject) && isset($form->subject)){ $arr_message['subject'] = "<br>".Yii::t('contact', 'Subject').": ".$form->subject;}else{$arr_message['subject'] =''; }
-        if(!empty($form->name) && isset($form->name)){ $arr_message['name'] = "<br>".Yii::t('contact', 'Name').": ".$form->name;}else{$arr_message['name'] =''; }
-        if(!empty($form->phone) && isset($form->phone)){ $arr_message['phone'] = "<br>".Yii::t('contact', 'Phone').": ".$form->phone;}else{$arr_message['phone'] =''; }
-        if(!empty($form->email) && isset($form->email)){ $arr_message['email'] = "<br>".Yii::t('contact', 'Email').": ".$form->email;}else{$arr_message['email'] =''; }
-        if(!empty($form->message) && isset($form->message)){ $arr_message['message'] = "<br>".Yii::t('contact', 'Message').": ".$form->message;}else{$arr_message['message'] =''; }
+        if(!empty($form->region) && isset($form->region)){ $arr_message['region'] = "<br>".Yii::t('contactform', 'Address').": ".$form->region;}else{$arr_message['region'] =''; }
+        if(!empty($form->subject) && isset($form->subject)){ $arr_message['subject'] = "<br>".Yii::t('contactform', 'Subject').": ".$form->subject;}else{$arr_message['subject'] =''; }
+        if(!empty($form->name) && isset($form->name)){ $arr_message['name'] = "<br>".Yii::t('contactform', 'Name').": ".$form->name;}else{$arr_message['name'] =''; }
+        if(!empty($form->phone) && isset($form->phone)){ $arr_message['phone'] = "<br>".Yii::t('contactform', 'Phone').": ".$form->phone;}else{$arr_message['phone'] =''; }
+        if(!empty($form->email) && isset($form->email)){ $arr_message['email'] = "<br>".Yii::t('contactform', 'Email').": ".$form->email;}else{$arr_message['email'] =''; }
+        if(!empty($form->message) && isset($form->message)){ $arr_message['message'] = "<br>".Yii::t('contactform', 'Message').": ".$form->message;}else{$arr_message['message'] =''; }
             $arr_message_all[] = $arr_message;
         $m = $this->mailer->compose()
             ->setTo(Yii::$app->controller->module->developmentEmail)
@@ -48,7 +48,7 @@ class ContactService
         }
 
         if (!$m->send()) {
-            throw new \RuntimeException(Yii::t('contact', 'Sending message to branch email error.'));
+            throw new \RuntimeException(Yii::t('contactform', 'Sending message to branch email error.'));
         }
 
 
@@ -66,7 +66,7 @@ class ContactService
                    }else{
                        $subject = $form->name;
                    }
-                   $content = Yii::t('contact', 'Thank you for your message! Your message will be considered soon.');
+                   $content = Yii::t('contactform', 'Thank you for your message! Your message will be considered soon.');
                    // Send To User
                    $m2 = $this->mailer->compose()
                        ->setTo($form->email)
@@ -75,7 +75,7 @@ class ContactService
                        ->setHtmlBody($content);
 
                    if (!$m2->send()) {
-                       throw new \RuntimeException(Yii::t('contact', 'Sending message to user email error.'));
+                       throw new \RuntimeException(Yii::t('contactform', 'Sending message to user email error.'));
                    }
                }
     }
