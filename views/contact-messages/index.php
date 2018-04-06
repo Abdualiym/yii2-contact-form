@@ -34,9 +34,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'created_at',
                 'format' => 'datetime',
                 'label' => Yii::t('contact', 'Дата'),
-            ]
-
-//            ['class' => 'yii\grid\ActionColumn'],
+            ],
+           //['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
     <?php Pjax::end(); ?>
