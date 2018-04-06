@@ -12,7 +12,7 @@ use yii\web\Controller;
 /**
  * Default controller for the `contact` module
  */
-class ContactController extends Controller implements ViewContextInterface
+class   ContactController extends Controller implements ViewContextInterface
 {
     private $service;
 
@@ -31,9 +31,9 @@ class ContactController extends Controller implements ViewContextInterface
 
     public function actionIndex()
     {
+        //VarDumper::dump(Yii::$app->request->post(), 10, true);die();
         $form = new ContactForm();
         if ($form->load(Yii::$app->request->post()) && $form->validate()) {
-
             try {
                 $this->service->send($form);
                 Yii::$app->session->setFlash('success', Yii::t('contactform', 'Thank you! Your application is accepted!'));
@@ -43,10 +43,8 @@ class ContactController extends Controller implements ViewContextInterface
             }
 //            return $this->refresh();
         }
-
-
         return $this->render('index', [
-            'model' => $form,
+            'form' => $form,
         ]);
     }
 
