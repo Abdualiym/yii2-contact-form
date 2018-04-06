@@ -57,11 +57,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'file',
                 'label' => Yii::t('contactform', 'File'),
             ],
-            */
+
             [
                 'attribute' => 'message.ntext',
                 'label' => Yii::t('contactform', 'Message text'),
-            ],
+            ],*/
             [
                 'attribute' => 'created_at',
                 'format' => 'datetime',
