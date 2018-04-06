@@ -42,6 +42,7 @@ return [
     // form labels
     'Name' => 'FIO',
     'Phone' => 'Telefon',
+    'Date receive' => 'Kelgan vaqti',
     'Address' => 'Manzil',
     'Subject' => 'Murojaat mavzusi',
     'Contact telephone number' => 'Muloqot uchun tеlеfon',

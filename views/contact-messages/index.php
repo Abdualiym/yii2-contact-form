@@ -40,17 +40,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'email',
                 'label' => Yii::t('contactform', 'E-mail'),
             ],
-            [
+            /*[
                 'attribute' => 'subject',
                 'label' => Yii::t('contactform', 'Subject'),
             ],
-            /*[
+            [
                 'attribute' => 'address',
                 'label' => Yii::t('contactform', 'Address'),
-            ],
-            [
-                'attribute' => 'file',
-                'label' => Yii::t('contactform', 'File'),
             ],
             [
                 'attribute' => 'file',
@@ -59,12 +55,12 @@ $this->params['breadcrumbs'][] = $this->title;
             */
             [
                 'attribute' => 'message.ntext',
-                'label' => Yii::t('contactform', 'Message'),
+                'label' => Yii::t('contactform', 'Message text'),
             ],
             [
                 'attribute' => 'created_at',
                 'format' => 'datetime',
-                'label' => Yii::t('contactform', 'Дата'),
+                'label' => Yii::t('contactform', 'Date receive'),
             ],
            //['class' => 'yii\grid\ActionColumn'],
         ],
