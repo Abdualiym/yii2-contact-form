@@ -18,6 +18,10 @@ use yii\behaviors\TimestampBehavior;
  */
 class ContactMessages extends \yii\db\ActiveRecord
 {
+    const STATUS_WAIT = 0;
+    const STATUS_NEW = 1;
+    const STATUS_ARCHIVE = 2;
+    const STATUS_READ = 3;
     /**
      * @inheritdoc
      */

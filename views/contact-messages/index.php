@@ -2,6 +2,7 @@
 
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
@@ -26,6 +27,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute' => 'status',
+                'format' => 'raw',
+                'value' => function ($model) {
+                    return \abdualiym\contactform\helpers\ContactMessagesHelper::statusLabel($model->status);
+                },
                 'label' => Yii::t('contactform', 'Status'),
             ],
             [
@@ -61,6 +66,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'created_at',
                 'format' => 'datetime',
                 'label' => Yii::t('contactform', 'Date receive'),
+            ],
+            [
+                'label'=>Yii::t('contactform', 'Send Message'),
+                'format' => 'html',
+                'value'=>function ($model) {
+                    return Html::a(Yii::t('contactform', ' SEND'),'/contactform/contact-messages/send?id='.$model->id, ['class'=>'btn fa fa-send']);
+                },
             ],
            //['class' => 'yii\grid\ActionColumn'],
         ],
