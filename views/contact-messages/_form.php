@@ -12,18 +12,14 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
-    <?= $form->field($model, 'status')->textInput() ?>
-
-    <?= $form->field($model, 'region_id')->textInput() ?>
-
-    <?= $form->field($model, 'subject_id')->textInput() ?>
+    <input type="text" name="ContactMessages[email]" class="form-control" value="<?= $model->email; ?>" readonly />
+    <?= $form->field($model, 'subject')->textInput() ?>
+<div class="form-group">
+    <textarea rows="8" class="form-control" title="Форма не может быть пустым" name="ContactMessages[message]" required></textarea>
+</div>
 
     <div class="form-group">
-        <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton(Yii::t('app', 'Send'), ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

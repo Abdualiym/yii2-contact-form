@@ -2,10 +2,12 @@
 
 namespace abdualiym\contactform\controllers;
 
+use abdualiym\contactform\services\ContactMessagesService;
 use Yii;
 use abdualiym\contactform\entities\ContactMessages;
 use abdualiym\contactform\forms\ContactMessagesSearch;
 use yii\base\ViewContextInterface;
+use yii\helpers\VarDumper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -15,6 +17,15 @@ use yii\filters\VerbFilter;
  */
 class ContactMessagesController extends Controller implements ViewContextInterface
 {
+    private $service;
+
+    public function __construct($id, $module, ContactMessagesService $service, $config = [])
+    {
+        parent::__construct($id, $module, $config);
+        $this->service = $service;
+    }
+
+
     public function behaviors()
     {
         return [
@@ -27,12 +38,10 @@ class ContactMessagesController extends Controller implements ViewContextInterfa
         ];
     }
 
-
     public function getViewPath()
     {
         return Yii::getAlias('@vendor/abdualiym/yii2-contact-form/views/contact-messages');
     }
-
 
     public function actionIndex()
     {
@@ -54,39 +63,22 @@ class ContactMessagesController extends Controller implements ViewContextInterfa
     }
 
 
-    public function actionCreate()
-    {
-        $model = new ContactMessages();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
-
-        return $this->render('create', [
-            'model' => $model,
-        ]);
-    }
-
-
-    public function actionUpdate($id)
+    public function actionSend($id)
     {
         $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            try {
+                $this->service->sendMessage($model);
+                Yii::$app->session->setFlash('success', Yii::t('contactform', 'Your message has been successfully sent!'));
+                return $this->redirect(['view', 'id' => $model->id]);
+            } catch (\Exception $e) {
+                Yii::$app->errorHandler->logException($e);
+                Yii::$app->session->setFlash('error', Yii::t('contactform', 'There was an error sending your message.'));
+            }
         }
-
         return $this->render('update', [
             'model' => $model,
         ]);
-    }
-
-
-    public function actionDelete($id)
-    {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
     }
 
 

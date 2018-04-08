@@ -5,6 +5,7 @@ return [
     'Thank you for your message! Your message will be considered soon.' => 'Murojaatingiz uchun raxmat! Sizning xabaringiz yaqin vaqt ichida ko`rib chiqiladi.',
     'Contacts' => 'Kontaktlar',
     'Feedback' => 'Qayta aloqa',
+    'Your message has been successfully sent!' => 'Sizning xabaringiz muoffaqiyatli jo`natildi',
     '&nbsp;' => '',
     'Status' => 'Holati',
     'Thank you! Your application is accepted!' => 'Rahmat! Murojaatngiz qabul qilindi!',

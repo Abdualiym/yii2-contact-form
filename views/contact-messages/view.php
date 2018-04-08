@@ -29,11 +29,19 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'created_at',
-            'updated_at',
-            'status',
-            'region_id',
-            'subject_id',
+            [
+                'attribute' => 'created_at',
+                'format' => 'datetime',
+                'label' => Yii::t('app', 'Created At')
+            ],
+            [
+                'attribute' => 'updated_at',
+                'format' => 'datetime',
+                'label' => Yii::t('app', 'Updated At')
+            ],
+            'name',
+            'subject',
+            'message.text',
         ],
     ]) ?>
 
