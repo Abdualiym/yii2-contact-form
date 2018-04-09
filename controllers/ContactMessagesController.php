@@ -68,7 +68,7 @@ class ContactMessagesController extends Controller implements ViewContextInterfa
 
     public function actionSend($id)
     {
-        $model = $this->findModel($id);
+        $model = new ContactMessages();
         if ($model->load(Yii::$app->request->post())) {
             try {
                 $this->service->sendMessage($model);
@@ -81,6 +81,7 @@ class ContactMessagesController extends Controller implements ViewContextInterfa
         }
         return $this->render('reply', [
             'model' => $model,
+            'email' => $this->findModel($id)->email
         ]);
     }
 

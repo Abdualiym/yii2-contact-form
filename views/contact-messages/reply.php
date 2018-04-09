@@ -1,7 +1,6 @@
 <?php
 
 use yii\helpers\Html;
-use mihaildev\ckeditor\CKEditor;
 use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model abdualiym\contactform\entities\ContactMessages */
@@ -18,11 +17,10 @@ $this->params['breadcrumbs'][] = Yii::t('contactform', 'Reply');
     <div class="contact-messages-form">
 
         <?php $form = ActiveForm::begin(); ?>
-
-        <input type="text" name="ContactMessages[email]" class="form-control" value="<?= $model->email; ?>" readonly />
+        <?= $form->field($model, 'email')->textInput(['value' => $email, 'readonly'=> true])->label(false) ?>
         <?= $form->field($model, 'subject')->textInput() ?>
         <div class="form-group">
-            <textarea rows="8" class="form-control" title="Форма не может быть пустым" name="ContactMessages[message]" required></textarea>
+            <?= $form->field($model, 'message')->widget(\mihaildev\ckeditor\CKEditor::class); ?>
         </div>
 
         <div class="form-group">
