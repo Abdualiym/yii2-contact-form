@@ -71,7 +71,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label'=>Yii::t('contactform', 'Send Message'),
                 'format' => 'html',
                 'value'=>function ($model) {
-                    return Html::a(Yii::t('contactform', ' SEND'),'/contactform/contact-messages/send?id='.$model->id, ['class'=>'btn fa fa-send']);
+                    return Html::a(Yii::t('contactform', 'Reply'),'/contactform/contact-messages/send?id='.$model->id, ['class'=>'btn fa fa-send']);
                 },
             ],
            //['class' => 'yii\grid\ActionColumn'],

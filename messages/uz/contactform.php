@@ -2,6 +2,7 @@
 
 return [
     // site helpers
+    'Reply' => 'Ответить',
     'Thank you for your message! Your message will be considered soon.' => 'Murojaatingiz uchun raxmat! Sizning xabaringiz yaqin vaqt ichida ko`rib chiqiladi.',
     'Contacts' => 'Kontaktlar',
     'Feedback' => 'Qayta aloqa',
