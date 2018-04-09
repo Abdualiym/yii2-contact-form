@@ -11,12 +11,10 @@ use yii\mail\MailerInterface;
 
 class ContactService
 {
-    private $adminEmail;
     private $mailer;
 
     public function __construct($adminEmail, MailerInterface $mailer)
     {
-        $this->adminEmail = $adminEmail;
         $this->mailer = $mailer;
     }
 
@@ -44,8 +42,8 @@ class ContactService
 
 HTML;
         $m = $this->mailer->compose()
-            ->setTo(Yii::$app->controller->module->developmentEmail)
-            ->setFrom(Yii::$app->controller->module->developmentEmail)
+            ->setTo(Yii::$app->params['supportEmail'])
+            ->setFrom(Yii::$app->params['supportEmail'])
             ->setSubject(Yii::t('contactform', 'Message from {attributeEmail}'),['attributeEmail' => $all['all']['email']])
             ->setHtmlBody($content);
 
@@ -78,7 +76,7 @@ HTML;
                    // Send To User
                    $m2 = $this->mailer->compose()
                        ->setTo($form->email)
-                       ->setFrom(Yii::$app->controller->module->developmentEmail)
+                       ->setFrom(Yii::$app->params['supportEmail'])
                        ->setSubject($subject)
                        ->setHtmlBody($content);
 
