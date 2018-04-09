@@ -18,7 +18,6 @@ class Bootstrap implements BootstrapInterface
         // Add module URL rules.
         Yii::$app->urlManager->addRules(
             [
-                'graphs'=>'/site/graphs',
                 'captcha'=>'/site/captcha',
                 'feedback' => '/contactform/contact/index',
             ],
