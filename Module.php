@@ -3,7 +3,7 @@
 namespace abdualiym\contactform;
 
 /**
- * contact module definition class
+ * contactform module definition class
  */
 class Module extends \yii\base\Module
 {
