@@ -6,6 +6,7 @@ use abdualiym\contactform\entities\Contact;
 use abdualiym\contactform\entities\ContactMessages;
 use abdualiym\contactform\forms\ContactForm;
 use Yii;
+use yii\helpers\VarDumper;
 use yii\mail\MailerInterface;
 
 class ContactService
@@ -22,24 +23,31 @@ class ContactService
     public function send(ContactForm $form)
     {
         $arr_message = [];
-        if(!empty($form->region) && isset($form->region)){ $arr_message['region'] = "<br>".Yii::t('contactform', 'Address').": ".$form->region;}else{$arr_message['region'] =''; }
-        if(!empty($form->subject) && isset($form->subject)){ $arr_message['subject'] = "<br>".Yii::t('contactform', 'Subject').": ".$form->subject;}else{$arr_message['subject'] =''; }
-        if(!empty($form->name) && isset($form->name)){ $arr_message['name'] = "<br>".Yii::t('contactform', 'Name').": ".$form->name;}else{$arr_message['name'] =''; }
-        if(!empty($form->phone) && isset($form->phone)){ $arr_message['phone'] = "<br>".Yii::t('contactform', 'Phone').": ".$form->phone;}else{$arr_message['phone'] =''; }
-        if(!empty($form->email) && isset($form->email)){ $arr_message['email'] = "<br>".Yii::t('contactform', 'Email').": ".$form->email;}else{$arr_message['email'] =''; }
-        if(!empty($form->message) && isset($form->message)){ $arr_message['message'] = "<br>".Yii::t('contactform', 'Message').": ".$form->message;}else{$arr_message['message'] =''; }
-            $arr_message_all[] = $arr_message;
+        foreach ($form as $key => $value){
+            $arr_message[$key] = $value;
+            $all['all'] = $arr_message;
+        }
+        $name = Yii::t('contactform', 'Name').': '.$all['all']['name'];
+        $subject = Yii::t('contactform', 'Subject').': '.$all['all']['subject'];
+        $message = Yii::t('contactform', 'Message text').': '.$all['all']['message'];
+        $address = Yii::t('contactform', 'Address').': '.$all['all']['address'];
+        $phone = Yii::t('contactform', 'Phone').': '.$all['all']['phone'];
+        $email = Yii::t('contactform', 'E-mail').': '.$all['all']['email'];
+
+        $content = <<<HTML
+        <h2>$name</h2><br>
+        <h4>$subject</h4><br>
+        <span>$message</span><br>
+        <span>$address</span><br>
+        <b>$phone</b><br>
+        <b>$email</b><br>
+
+HTML;
         $m = $this->mailer->compose()
             ->setTo(Yii::$app->controller->module->developmentEmail)
             ->setFrom(Yii::$app->controller->module->developmentEmail)
-            ->setSubject('te2')
-            ->setHtmlBody('
-            '.$arr_message['region'].'
-            '.$arr_message['subject'].'
-            '.$arr_message['name'].'
-            '.$arr_message['phone'].'
-            '.$arr_message['email'].'
-            '.$arr_message['message'].'');
+            ->setSubject(Yii::t('contactform', 'Message from {attributeEmail}'),['attributeEmail' => $all['all']['email']])
+            ->setHtmlBody($content);
 
         if ($form->file) {
             $fullname = Yii::getAlias('@frontend/web/app-temp/') . Yii::$app->formatter->asTime(time(), "php:d-m-Y_H-i-s") . ' - fayl.' . $form->file->extension;

@@ -24,7 +24,7 @@ class ContactForm extends Model
         return [
             [['name', 'phone', 'email', 'message', 'verifyCode'], 'required'],
             [['name', 'phone', 'subject'], 'string', 'max' => 255],
-            [['phone'], 'match', 'pattern' => '#^[\+]?\d{3}\s\(\d{2}\)\s\d{3}\-\d{2}\-\d{2}$#'],
+            [['phone'], 'match', 'pattern' => '#^[\+]?\d{3}\s\(\d{2}\)\s\d{3}\-\d{2}\-\d{}71$#'],
             ['email', 'email'],
             [['address', 'message'], 'string'],
             [
