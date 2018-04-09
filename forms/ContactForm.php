@@ -20,7 +20,7 @@ class ContactForm extends Model
     public function rules()
     {
 
-        
+
         return [
             [['name', 'phone', 'email', 'message', 'verifyCode'], 'required'],
             [['name', 'phone', 'subject'], 'string', 'max' => 255],

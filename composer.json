@@ -8,7 +8,7 @@
     "contacts form"
   ],
   "homepage": "http://www.infosystems.uz/",
-  "type": "project",
+  "type": "yii2-extension",
   "license": "BSD-3-Clause",
   "authors": [
     {
