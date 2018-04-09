@@ -14,13 +14,25 @@ $this->params['breadcrumbs'][] = Yii::t('contactform', 'Reply');
 ?>
 <div class="contact-messages-reply">
 
+
     <div class="contact-messages-form">
 
         <?php $form = ActiveForm::begin(); ?>
-        <?= $form->field($model, 'email')->textInput(['value' => $email, 'readonly'=> true])->label(false) ?>
+        <?= $form->field($model, 'email')->textInput(['value' => $data->email, 'readonly'=> true])->label(false) ?>
+        <br>
+        <span><?= Yii::t('contactform', 'Message')?></span>
+        <blockquote><?= $data->message; ?></blockquote>
+
         <?= $form->field($model, 'subject')->textInput() ?>
         <div class="form-group">
-            <?= $form->field($model, 'message')->widget(\mihaildev\ckeditor\CKEditor::class); ?>
+            <?= $form->field($model, 'message')->widget(\mihaildev\ckeditor\CKEditor::className(),
+            [
+                'editorOptions' => [
+                    'preset' => 'full', //разработанны стандартные настройки basic, standard, full данную возможность не обязательно использовать
+                    'inline' => false, //по умолчанию false
+                    'rows' =>6
+                ],
+            ]); ?>
         </div>
 
         <div class="form-group">

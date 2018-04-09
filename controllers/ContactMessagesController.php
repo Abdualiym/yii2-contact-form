@@ -81,7 +81,7 @@ class ContactMessagesController extends Controller implements ViewContextInterfa
         }
         return $this->render('reply', [
             'model' => $model,
-            'email' => $this->findModel($id)->email
+            'data' => $this->findModel($id)
         ]);
     }
 
