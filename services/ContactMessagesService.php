@@ -26,6 +26,11 @@ class ContactMessagesService
             ->setHtmlBody($form->message);
         if (!$m->send()) {
             throw new \RuntimeException(Yii::t('contactform', 'Sending message to branch email error.'));
+        }else{
+            $message = new ContactMessages();
+            $message->status = $message::STATUS_ARCHIVE;
+            $message->save();
+            return true;
         }
 
     }

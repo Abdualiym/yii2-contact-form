@@ -2,7 +2,9 @@
 
 return [
     # site helpers
-    'Reply' => 'Javob berish',
+
+    'Reply' => 'Ответить',
+    'View' => 'Посмотреть',
     'Thank you for your message! Your message will be considered soon.' => 'Спасибо за ваше обращение! Ваше сообщение будет рассмотрено в ближайшее время.',
     'Your message has been successfully sent!' => 'Ваше сообщение было успешно отправлено',
     'Name' => 'ФИО',

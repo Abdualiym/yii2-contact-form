@@ -57,6 +57,9 @@ class ContactMessagesController extends Controller implements ViewContextInterfa
 
     public function actionView($id)
     {
+        $message = new ContactMessages();
+        $message->status = $message::STATUS_READ;
+        $message->save();
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);

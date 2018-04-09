@@ -68,10 +68,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => Yii::t('contactform', 'Date receive'),
             ],
             [
-                'label'=>Yii::t('contactform', 'Send Message'),
+                'label'=>Yii::t('contactform', 'Actions'),
                 'format' => 'html',
                 'value'=>function ($model) {
-                    return Html::a(Yii::t('contactform', 'Reply'),'/contactform/contact-messages/send?id='.$model->id, ['class'=>'btn fa fa-send']);
+                    return '<a href="/contactform/contact-messages/send?id='.$model->id.'"><i class="fa fa-send"></i> '.Yii::t('contactform', 'Reply').'</a><br>
+                            <a href="/contactform/contact-messages/view?id='.$model->id.'"><i class="fa fa-eye"></i> '.Yii::t('contactform', 'View').'</a><br>';
                 },
             ],
            //['class' => 'yii\grid\ActionColumn'],
