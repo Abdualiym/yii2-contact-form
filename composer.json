@@ -5,10 +5,10 @@
     "yii2",
     "framework",
     "advanced",
-    "contacts"
+    "contacts form"
   ],
   "homepage": "http://www.infosystems.uz/",
-  "type": "yii2-extension",
+  "type": "project",
   "license": "BSD-3-Clause",
   "authors": [
     {
