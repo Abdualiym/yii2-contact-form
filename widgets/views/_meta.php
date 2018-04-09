@@ -6,16 +6,19 @@
  * Time: 16:27
  */
 //\yii\helpers\VarDumper::dump($text, 10, true);die();
+$phone = $text->value(9, 'phone');
+$email = $text->value(9, 'email');
 ?>
 <address>
 
-    <a class="contact" href="tel:<?= $text->value('phone'); ?>">
+    <a class="contact" href="tel:<?= $phone; ?>">
         <i class="icon-phone"></i>
-        <?= $text->value('phone'); ?>
+        <?= $phone; ?>
     </a>
-    <a class="contact" href="mailto:<?= $text->value('email'); ?>">
+    <a class="contact" href="mailto:<?= $email; ?>">
         <i class="icon-mail"></i>
-        <?= $text->value('email'); ?>
+        <?= $email; ?>
     </a>
+
 </address>
 
