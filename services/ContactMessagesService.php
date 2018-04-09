@@ -17,12 +17,12 @@ class ContactMessagesService
         $this->mailer = $mailer;
     }
 
-    public function sendMessage($form)
+    public function sendMessage($message)
     {
         $m = $this->mailer->compose()
             ->setTo($form->email)
             ->setFrom(Yii::$app->controller->module->developmentEmail)
-            ->setSubject($form->subject)
+            ->setSubject("Reply meassage")
             ->setHtmlBody($form->message);
         if (!$m->send()) {
             throw new \RuntimeException(Yii::t('contactform', 'Sending message to branch email error.'));

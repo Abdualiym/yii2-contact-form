@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = Yii::t('contactform', 'Reply');
         <span><?= Yii::t('contactform', 'Message')?></span>
         <blockquote><?= $data->message; ?></blockquote>
 
-        <?= $form->field($model, 'subject')->textInput() ?>
+        <?= $form->field($model, 'subject')->textInput(['required' => true]) ?>
         <div class="form-group">
             <?= $form->field($model, 'message')->widget(\mihaildev\ckeditor\CKEditor::className(),
             [
