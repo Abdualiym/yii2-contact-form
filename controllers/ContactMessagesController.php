@@ -2,6 +2,7 @@
 
 namespace abdualiym\contactform\controllers;
 
+use abdualiym\contactform\forms\ReplyMessageForm;
 use abdualiym\contactform\services\ContactMessagesService;
 use Yii;
 use abdualiym\contactform\entities\ContactMessages;
@@ -68,10 +69,12 @@ class ContactMessagesController extends Controller implements ViewContextInterfa
 
     public function actionSend($id)
     {
-        $model = new ContactMessages();
-        if ($model->load(Yii::$app->request->post())) {
+        $model = new ReplyMessageForm();
+        $data  = ContactMessages::findOne($id);
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             try {
-                $this->service->sendMessage($model->message);
+
+                $this->service->sendMessage($model);
                 Yii::$app->session->setFlash('success', Yii::t('contactform', 'Your message has been successfully sent!'));
                 return $this->redirect(['view', 'id' => $model->id]);
             } catch (\Exception $e) {
@@ -81,7 +84,7 @@ class ContactMessagesController extends Controller implements ViewContextInterfa
         }
         return $this->render('reply', [
             'model' => $model,
-            'data' => $this->findModel($id)
+            'data' => $data
         ]);
     }
 

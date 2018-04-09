@@ -4,6 +4,7 @@ namespace abdualiym\contactform\services;
 
 use abdualiym\contactform\entities\Contact;
 use abdualiym\contactform\entities\ContactMessages;
+use abdualiym\contactform\entities\ReplyMessage;
 use abdualiym\contactform\forms\ContactForm;
 use Yii;
 use yii\mail\MailerInterface;
@@ -17,16 +18,23 @@ class ContactMessagesService
         $this->mailer = $mailer;
     }
 
-    public function sendMessage($message)
+    public function sendMessage($form)
     {
+
         $m = $this->mailer->compose()
-            ->setTo($form->email)
+            ->setTo($form->user_email)
             ->setFrom(Yii::$app->controller->module->developmentEmail)
-            ->setSubject("Reply meassage")
+            ->setSubject(Yii::t('contactform', 'Reply message').' '.Yii::$app->params['frontendHostInfo'])
             ->setHtmlBody($form->message);
         if (!$m->send()) {
             throw new \RuntimeException(Yii::t('contactform', 'Sending message to branch email error.'));
         }else{
+            $reply = new ReplyMessage();
+            $reply->user_email = $form->user_email;
+            $reply->message = $form->message;
+            $reply->status = $reply::STATUS_ARCHIVE;
+            $reply->save();
+
             $message = new ContactMessages();
             $message->status = $message::STATUS_ARCHIVE;
             $message->save();

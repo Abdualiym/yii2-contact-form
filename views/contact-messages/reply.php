@@ -6,10 +6,10 @@ use yii\widgets\ActiveForm;
 /* @var $model abdualiym\contactform\entities\ContactMessages */
 
 $this->title = Yii::t('contactform', 'Reply user message: {nameAttribute}', [
-    'nameAttribute' => $model->email,
+    'nameAttribute' => $data->email,
 ]);
 $this->params['breadcrumbs'][] = ['label' => Yii::t('contactform', 'Contact Messages'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = ['label' => $data->id, 'url' => ['view', 'id' => $data->id]];
 $this->params['breadcrumbs'][] = Yii::t('contactform', 'Reply');
 ?>
 <div class="contact-messages-reply">
@@ -18,12 +18,11 @@ $this->params['breadcrumbs'][] = Yii::t('contactform', 'Reply');
     <div class="contact-messages-form">
 
         <?php $form = ActiveForm::begin(); ?>
-        <?= $form->field($model, 'email')->textInput(['value' => $data->email, 'readonly'=> true])->label(false) ?>
+        <?= $form->field($model, 'user_email')->textInput(['value' => $data->email, 'readonly'=> true])->label(false) ?>
         <br>
         <span><?= Yii::t('contactform', 'Message')?></span>
         <blockquote><?= $data->message; ?></blockquote>
 
-        <?= $form->field($model, 'subject')->textInput(['required' => true]) ?>
         <div class="form-group">
             <?= $form->field($model, 'message')->widget(\mihaildev\ckeditor\CKEditor::className(),
             [
