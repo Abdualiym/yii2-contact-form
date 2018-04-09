@@ -79,7 +79,7 @@ class ContactMessagesController extends Controller implements ViewContextInterfa
                 Yii::$app->session->setFlash('error', Yii::t('contactform', 'There was an error sending your message.'));
             }
         }
-        return $this->render('update', [
+        return $this->render('reply', [
             'model' => $model,
         ]);
     }

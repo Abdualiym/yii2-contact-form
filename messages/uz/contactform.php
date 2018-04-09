@@ -2,6 +2,7 @@
 
 return [
     // site helpers
+    'Reply user message: {nameAttribute}' => 'Foydalanuvchi murojaatiga javob: {nameAttribute}',
     'View' => 'Ko`rish',
     'Reply' => 'Javob berish',
     'Thank you for your message! Your message will be considered soon.' => 'Murojaatingiz uchun raxmat! Sizning xabaringiz yaqin vaqt ichida ko`rib chiqiladi.',

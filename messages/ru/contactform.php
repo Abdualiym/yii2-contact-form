@@ -3,6 +3,7 @@
 return [
     # site helpers
 
+    'Reply user message: {nameAttribute}' => 'Ответьте на сообщение пользователя: {nameAttribute}',
     'Reply' => 'Ответить',
     'View' => 'Посмотреть',
     'Thank you for your message! Your message will be considered soon.' => 'Спасибо за ваше обращение! Ваше сообщение будет рассмотрено в ближайшее время.',
