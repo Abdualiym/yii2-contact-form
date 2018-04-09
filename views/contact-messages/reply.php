@@ -18,6 +18,7 @@ $this->params['breadcrumbs'][] = Yii::t('contactform', 'Reply');
     <div class="contact-messages-form">
 
         <?php $form = ActiveForm::begin(); ?>
+        <?= $form->field($model, 'message_id')->hiddenInput(['value' => $data->id])->label(false) ?>
         <?= $form->field($model, 'user_email')->textInput(['value' => $data->email, 'readonly'=> true])->label(false) ?>
         <br>
         <span><?= Yii::t('contactform', 'Message')?></span>

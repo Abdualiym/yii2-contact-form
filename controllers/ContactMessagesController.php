@@ -76,7 +76,7 @@ class ContactMessagesController extends Controller implements ViewContextInterfa
 
                 $this->service->sendMessage($model);
                 Yii::$app->session->setFlash('success', Yii::t('contactform', 'Your message has been successfully sent!'));
-                return $this->redirect(['view', 'id' => $model->id]);
+
             } catch (\Exception $e) {
                 Yii::$app->errorHandler->logException($e);
                 Yii::$app->session->setFlash('error', Yii::t('contactform', 'There was an error sending your message.'));

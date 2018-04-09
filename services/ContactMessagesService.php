@@ -26,19 +26,15 @@ class ContactMessagesService
             ->setFrom(Yii::$app->controller->module->developmentEmail)
             ->setSubject(Yii::t('contactform', 'Reply message').' '.Yii::$app->params['frontendHostInfo'])
             ->setHtmlBody($form->message);
-        if (!$m->send()) {
-            throw new \RuntimeException(Yii::t('contactform', 'Sending message to branch email error.'));
-        }else{
+
             $reply = new ReplyMessage();
             $reply->user_email = $form->user_email;
             $reply->message = $form->message;
             $reply->status = $reply::STATUS_ARCHIVE;
             $reply->save();
 
-            $message = new ContactMessages();
-            $message->status = $message::STATUS_ARCHIVE;
-            $message->save();
-            return true;
+        if (!$m->send()) {
+            throw new \RuntimeException(Yii::t('contactform', 'Sending message to branch email error.'));
         }
 
     }
