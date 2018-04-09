@@ -11,13 +11,16 @@ use yii\mail\MailerInterface;
 
 class ContactService
 {
+    private $adminEmail;
     private $mailer;
 
     public function __construct($adminEmail, MailerInterface $mailer)
     {
+        $this->adminEmail = $adminEmail;
         $this->mailer = $mailer;
     }
 
+    
     public function send(ContactForm $form)
     {
         $arr_message = [];
