@@ -18,6 +18,8 @@ use yii\behaviors\TimestampBehavior;
  */
 class ContactMessages extends \yii\db\ActiveRecord
 {
+
+
     const STATUS_WAIT = 0;
     const STATUS_NEW = 1;
     const STATUS_ARCHIVE = 2;
@@ -28,17 +30,6 @@ class ContactMessages extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'contact_form_messages';
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-//            [['status'], 'required'],
-            [['status'], 'integer'],
-        ];
     }
 
     /**

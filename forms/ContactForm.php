@@ -19,13 +19,49 @@ class ContactForm extends Model
 
     public function rules()
     {
-
-
         return [
-            [['name', 'phone', 'email', 'message', 'verifyCode'], 'required'],
+            [['message', 'verifyCode'], 'required'],
+            ['email', 'required', 'when' => function($model) {
+                if(Yii::$app->controller->module->emailRequired){
+                    return empty($model->email)? true : false;
+                }
+            }],
+            ['name', 'required', 'when' => function($model) {
+                if(Yii::$app->controller->module->nameRequired){
+                    return empty($model->name)? true : false;
+                }
+
+            }],
+            ['phone', 'required', 'when' => function($model) {
+                if(Yii::$app->controller->module->phoneRequired){
+                    return empty($model->phone)? true : false;
+                }
+            }],
+            ['email', 'required', 'when' => function($model) {
+                if(Yii::$app->controller->module->emailRequired){
+                    return empty($model->email)? true : false;
+                }
+            }],
+            ['subject', 'required', 'when' => function($model) {
+                if(Yii::$app->controller->module->subjectRequired){
+                    return empty($model->subject)? true : false;
+                }
+            }],
+            ['subject', 'required', 'when' => function($model) {
+                if(Yii::$app->controller->module->subjectRequired){
+                    return empty($model->subject)? true : false;
+                }
+            }],
+            ['verifyCode', 'required', 'when' => function($model) {
+                if(Yii::$app->controller->module->verifyCodeRequired){
+                    return empty($model->verifyCode)? true : false;
+                }
+            }],
+            [['message'], 'required'],
             [['name', 'phone', 'subject'], 'string', 'max' => 255],
             [['phone'], 'match', 'pattern' => '#^[\+]?\d{3}\s\(\d{2}\)\s\d{3}\-\d{2}\-\d{2}$#'],
             ['email', 'email'],
+
             [['address', 'message'], 'string'],
             [
                 'file', 'file', 'skipOnEmpty' => true, // file NOT REQUIRED
