@@ -23,7 +23,7 @@ class ContactMessagesService
 
         $m = $this->mailer->compose()
             ->setTo($form->user_email)
-            ->setFrom(Yii::$app->params['supportEmail'])
+            ->setFrom(Yii::$app->controller->module->email)
             ->setSubject(Yii::t('contactform', 'Reply message').' '.Yii::$app->params['frontendHostInfo'])
             ->setHtmlBody($form->message);
 

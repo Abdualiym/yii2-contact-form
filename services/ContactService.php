@@ -45,8 +45,8 @@ class ContactService
 
 HTML;
         $m = $this->mailer->compose()
-            ->setTo(Yii::$app->params['supportEmail'])
-            ->setFrom(Yii::$app->params['supportEmail'])
+            ->setTo(Yii::$app->controller->module->email)
+            ->setFrom(Yii::$app->controller->module->email)
             ->setSubject(Yii::t('contactform', 'Message from {attributeEmail}'),['attributeEmail' => $all['all']['email']])
             ->setHtmlBody($content);
 

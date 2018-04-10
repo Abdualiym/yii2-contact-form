@@ -9,5 +9,5 @@ class Module extends \yii\base\Module
 {
     public $controllerNamespace = 'abdualiym\contactform\controllers';
 
-    public $developmentEmail = false;
+    public $email = false;
 }
