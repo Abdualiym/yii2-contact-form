@@ -19,49 +19,48 @@ class ContactForm extends Model
 
     public function rules()
     {
+
+
         return [
-            [['message', 'verifyCode'], 'required'],
-            ['email', 'required', 'when' => function($model) {
-                if(Yii::$app->controller->module->emailRequired){
-                    return empty($model->email)? true : false;
-                }
-            }],
             ['name', 'required', 'when' => function($model) {
                 if(Yii::$app->controller->module->nameRequired){
-                    return empty($model->name)? true : false;
+                    return $this->validateAttributeMessage($model->name);
                 }
-
             }],
             ['phone', 'required', 'when' => function($model) {
                 if(Yii::$app->controller->module->phoneRequired){
-                    return empty($model->phone)? true : false;
+                    return $this->validateAttributeMessage($model->phone);
                 }
             }],
             ['email', 'required', 'when' => function($model) {
                 if(Yii::$app->controller->module->emailRequired){
-                    return empty($model->email)? true : false;
+                   return $this->validateAttributeMessage($model->email);
                 }
             }],
             ['subject', 'required', 'when' => function($model) {
                 if(Yii::$app->controller->module->subjectRequired){
-                    return empty($model->subject)? true : false;
+                    return $this->validateAttributeMessage($model->subject);
                 }
             }],
-            ['subject', 'required', 'when' => function($model) {
-                if(Yii::$app->controller->module->subjectRequired){
-                    return empty($model->subject)? true : false;
+            ['address', 'required', 'when' => function($model) {
+                if(Yii::$app->controller->module->addressRequired){
+                    return $this->validateAttributeMessage($model->address);
+                }
+            }],
+            ['message', 'required', 'when' => function($model) {
+                if(Yii::$app->controller->module->messageRequired){
+                    return $this->validateAttributeMessage($model->message);
                 }
             }],
             ['verifyCode', 'required', 'when' => function($model) {
                 if(Yii::$app->controller->module->verifyCodeRequired){
-                    return empty($model->verifyCode)? true : false;
+                    return $this->validateAttributeMessage($model->verifyCode);
                 }
             }],
-            [['message'], 'required'],
+            //[['name', 'phone', 'email', 'message', 'verifyCode'], 'required'],
             [['name', 'phone', 'subject'], 'string', 'max' => 255],
             [['phone'], 'match', 'pattern' => '#^[\+]?\d{3}\s\(\d{2}\)\s\d{3}\-\d{2}\-\d{2}$#'],
             ['email', 'email'],
-
             [['address', 'message'], 'string'],
             [
                 'file', 'file', 'skipOnEmpty' => true, // file NOT REQUIRED
@@ -72,6 +71,11 @@ class ContactForm extends Model
             ],
             ['verifyCode', 'captcha'],
         ];
+    }
+
+    public function ValidateAttributeMessage($attributeName)
+    {
+        return empty($model->$attributeName)? true : false;
     }
 
     public function attributeLabels()

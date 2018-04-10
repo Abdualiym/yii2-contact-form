@@ -13,6 +13,8 @@ class Module extends \yii\base\Module
     public $nameRequired = true;
     public $emailRequired = true;
     public $phoneRequired = true;
+    public $messageRequired = true;
     public $verifyCodeRequired = true;
     public $subjectRequired = true;
+    public $addressRequired = true;
 }
