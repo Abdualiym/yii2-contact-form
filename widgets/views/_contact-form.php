@@ -12,7 +12,10 @@ use yii\widgets\ActiveForm;
     <div class="section-title"><?= Html::encode($this->title) ?></div>
     <br><?= \common\widgets\Alert::widget() ?>
     <?= \frontend\widgets\MetaWidget::widget();?>
-    <div id="map"></div>
+    <!--<div id="map"></div>-->
+    <div class="col-md-12"><div class="col-md-6"><?= $text->value(9, 'longitude');?></div>
+        <div class="col-md-6"><?= $text->value(9, 'latitude');?></div>
+    </div></br>
     <div class="contact-form">
         <div class="section-title"><?= Yii::t('contactform', 'Feedback'); ?></div>
 
@@ -56,6 +59,8 @@ use yii\widgets\ActiveForm;
     document.getElementById("tasix-verifycode-image").setAttribute("title", "<?= Yii::t('app', 'Change image') ?>");
     // });
 </script>
+
+
 <?php $this->registerJs(preg_replace('~^\s*<script.*>|</script>\s*$~ U', '', ob_get_clean())) ?>
 
 
