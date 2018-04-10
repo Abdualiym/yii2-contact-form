@@ -7,17 +7,21 @@
  */
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+$lang = \abdualiym\languageClass\Language::getLangByPrefix(\Yii::$app->language);
+
 ?>
 <div class="content">
     <div class="section-title"><?= Html::encode($this->title) ?></div>
     <br><?= \common\widgets\Alert::widget() ?>
     <?= \frontend\widgets\MetaWidget::widget();?>
     <!--<div id="map"></div>-->
-    <div class="col-md-12"><div class="col-md-6"><?= $text->value(9, 'longitude');?></div>
-        <div class="col-md-6"><?= $text->value(9, 'latitude');?></div>
-    </div></br>
+    <?php
+    if($modelcontent = \abdualiym\text\entities\TextTranslation::find()->where(['parent_id' => 9, 'lang_id' => $lang['id']])->one()){
+        if($modelcontent){echo $modelcontent->content; }
+    };
+    ?>
     <div class="contact-form">
-        <!--<div class="section-title"><?/*= Yii::t('contactform', 'Feedback'); */?></div>-->
+        <!--<div class="section-title"><?php/*echo Yii::t('contactform', 'Feedback'); */?></div>-->
 
         <?php $form = ActiveForm::begin(['id' => 'callbackForm']); ?>
 
