@@ -6,7 +6,7 @@ use abdualiym\contactform\Module;
 use yii\base\Model;
 use Yii;
 
-class ReplyMessageForm extends Model
+class ContactMessageForm extends Model
 {
     public $user_email;
     public $message;

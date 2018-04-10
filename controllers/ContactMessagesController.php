@@ -2,6 +2,7 @@
 
 namespace abdualiym\contactform\controllers;
 
+use abdualiym\contactform\forms\ContactMessageForm;
 use abdualiym\contactform\forms\ReplyMessageForm;
 use abdualiym\contactform\services\ContactMessagesService;
 use Yii;
@@ -71,7 +72,7 @@ class ContactMessagesController extends Controller implements ViewContextInterfa
 
     public function actionSend($id)
     {
-        $model = new ReplyMessageForm();
+        $model = new ContactMessageForm();
         $data  = ContactMessages::findOne($id);
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             try {
