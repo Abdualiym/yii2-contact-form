@@ -16,7 +16,7 @@ return [
     'Reply message' => 'Murojaat javobi',
     'Reply' => 'Javob berish',
     'Thank you for your message! Your message will be considered soon.' => 'Murojaatingiz uchun raxmat! Sizning xabaringiz yaqin vaqt ichida ko`rib chiqiladi.',
-    'Contacts' => 'Kontaktlar',
+    'Contacts' => 'Bog`lanish',
     'Feedback' => 'Qayta aloqa',
     'Your message has been successfully sent!' => 'Sizning xabaringiz muoffaqiyatli jo`natildi',
     '&nbsp;' => '',
