@@ -2,7 +2,12 @@
 
 return [
     // site helpers
+    'Created at' => 'Дата добавления',
+    'Updated at' => 'Дата обновления',
+    'Created by' => 'Создаль',
+    'Updated by' => 'Обновиль',
     'Reply user message: {nameAttribute}' => 'Foydalanuvchi murojaatiga javob: {nameAttribute}',
+    'Reply to: {nameAttribute}' => 'Foydalanuvchi {nameAttribute} murojaatiga javob: ',
     'View' => 'Ko`rish',
     'Delete' => 'O`chirish',
     'Are you sure you want to delete this message?' => 'Ushbu xabarni o`chirmoqchimisiz?',

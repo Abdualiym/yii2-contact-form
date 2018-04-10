@@ -2,8 +2,12 @@
 
 return [
     # site helpers
-
+    'Created at' => 'Yaratilgan vaqti',
+    'Updated at' => 'Yangilangan vaqt',
+    'Created by' => 'Kim tomonidan yaratildi',
+    'Updated by' => 'Kim tomonidan yangilandi',
     'Reply user message: {nameAttribute}' => 'Ответьте на сообщение пользователя: {nameAttribute}',
+    'Reply to: {nameAttribute}' => 'Ответь на: {nameAttribute}',
     'Reply message' => 'Ответное сообщение',
     'Reply' => 'Ответить',
     'Delete' => 'Удалить',

@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model abdualiym\contactform\entities\ContactMessages */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('contactform', 'Message'), 'url' => ['index']];
+$this->title = $model->name;
+$this->params['breadcrumbs'][] = ['label' => Yii::t('contactform', 'Feedback'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="contact-messages-view">
@@ -18,12 +18,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'method' => 'post',
         ]
     ]) ?>
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h3><?= Yii::t('contactform', 'Name')?>: <?= Html::encode($this->title) ?></h3>
 
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
+            'name',
+            'email',
             [
                 'attribute' => 'created_at',
                 'format' => 'datetime',
@@ -34,10 +36,40 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'datetime',
                 'label' => Yii::t('app', 'Updated At')
             ],
-            'name',
-            'subject',
-            'message.text',
+            [
+                'attribute' => 'subject',
+                'format' => 'text',
+                'label' => Yii::t('app', 'Subject')
+            ],
+            [
+                'attribute' => 'message',
+                'format' => 'text',
+                'label' => Yii::t('app', 'Message text')
+            ],
         ],
     ]) ?>
 
+    <div class="box box-default">
+
+        <div class="box-header with-border"><?= Yii::t('contactform', 'Reply to: {nameAttribute}', ['nameAttribute' => $model->email ]) ?></div>
+
+        <div class="box-body">
+            <!-- Nav tabs -->
+            <?php foreach ($model->replyMessage($model->id) as $item): ?>
+            <span>
+                <?= Yii::t('contactform', 'Created by')?>
+                :
+
+                <?= $model->createdBy($item->created_by); ?>
+            </span><br>
+                <span>
+                <?= Yii::t('contactform', 'Created at')?>:
+
+                    <?= \Yii::$app->formatter->asDatetime($item->created_at, "php:d-m-Y H:i:s"); ?>
+            </span>
+                <br>
+            <blockquote><?= $item->message; ?></blockquote>
+            <?php endforeach; ?>
+        </div>
+    </div>
 </div>

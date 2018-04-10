@@ -10,6 +10,7 @@ class ContactMessageForm extends Model
 {
     public $user_email;
     public $message;
+    public $message_id;
     public $subject;
 
     public function rules()
@@ -21,6 +22,7 @@ class ContactMessageForm extends Model
             [['message'], 'required'],
             [['subject'], 'string', 'max' => 255],
             [['message'], 'string'],
+            [['message_id'], 'integer'],
         ];
     }
 

@@ -11,6 +11,8 @@ use yii\helpers\Html;
 
 $this->title = \Yii::t('contactform', 'Feedback');
 $this->params['breadcrumbs'][] = $this->title;
+
+
 ?>
 <div class="contact-messages-index">
 
@@ -71,8 +73,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label'=>Yii::t('contactform', 'Actions'),
                 'format' => 'html',
                 'value'=>function ($model) {
+                if($model->replyMessage($model->id) == null || empty($model->replyMessage($model->id))){
                     return '<a href="/contactform/contact-messages/send?id='.$model->id.'"><i class="fa fa-send"></i> '.Yii::t('contactform', 'Reply').'</a><br>
                             <a href="/contactform/contact-messages/view?id='.$model->id.'"><i class="fa fa-eye"></i> '.Yii::t('contactform', 'View').'</a><br>';
+                }else{
+                    return '<a href="/contactform/contact-messages/view?id='.$model->id.'"><i class="fa fa-eye"></i> '.Yii::t('contactform', 'View').'</a><br>';
+                }
+
                 },
             ],
            //['class' => 'yii\grid\ActionColumn'],

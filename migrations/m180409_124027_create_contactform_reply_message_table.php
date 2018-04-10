@@ -20,10 +20,14 @@ class m180409_124027_create_contactform_reply_message_table extends Migration
             'message_id' => $this->integer()->comment('User message id'),
             'user_email' => $this->string(),
             'message' => $this->text(),
+            'created_by' => $this->integer()->unsigned()->notNull(),
+            'updated_by' => $this->integer()->unsigned()->notNull(),
             'created_at' => $this->integer()->unsigned()->notNull(),
             'updated_at' => $this->integer()->unsigned()->notNull(),
             'status' => $this->integer()->notNull(),
         ], $tableOptions);
+
+        $this->addForeignKey('fk_contactform_reply_message_contactform__message_id', 'contactform_reply_message', 'message_id', 'contact_form_messages', 'id', 'SET NULL', 'SET NULL');
     }
 
     /**

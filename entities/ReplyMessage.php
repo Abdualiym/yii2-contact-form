@@ -3,7 +3,9 @@
 namespace abdualiym\contactform\entities;
 
 use abdualiym\contactform\Module;
+use lhs\Yii2SaveRelationsBehavior\SaveRelationsBehavior;
 use Yii;
+use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
 
 /**
@@ -33,7 +35,11 @@ class ReplyMessage extends \yii\db\ActiveRecord
     public function behaviors(): array
     {
         return [
-            TimestampBehavior::class,
+            BlameableBehavior::className(),
+            TimestampBehavior::className(),
+            [
+                'class' => SaveRelationsBehavior::className(),
+            ],
         ];
     }
 

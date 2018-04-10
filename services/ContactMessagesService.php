@@ -30,6 +30,7 @@ class ContactMessagesService
             $reply = new ReplyMessage();
             $reply->user_email = $form->user_email;
             $reply->message = $form->message;
+            $reply->message_id = $form->message_id;
             $reply->status = $reply::STATUS_ARCHIVE;
             $reply->save();
 

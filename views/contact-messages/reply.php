@@ -8,8 +8,8 @@ use yii\widgets\ActiveForm;
 $this->title = Yii::t('contactform', 'Reply user message: {nameAttribute}', [
     'nameAttribute' => $data->email,
 ]);
-$this->params['breadcrumbs'][] = ['label' => Yii::t('contactform', 'Contact Messages'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $data->id, 'url' => ['view', 'id' => $data->id]];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('contactform', 'Feedback'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $data->email, 'url' => ['view', 'id' => $data->id]];
 $this->params['breadcrumbs'][] = Yii::t('contactform', 'Reply');
 ?>
 <div class="contact-messages-reply">

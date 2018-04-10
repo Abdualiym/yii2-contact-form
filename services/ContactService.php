@@ -62,11 +62,13 @@ HTML;
 
 
                $message = new ContactMessages();
-               $message->status = 1;
-               $message->name = $form->name;
-               $message->phone = $form->phone;
-               $message->email = $form->email;
-               $message->message = $form->message;
+               $message->status = $message::STATUS_NEW;
+               $message->name = $all['all']['name'];
+               $message->phone = $all['all']['phone'];
+               $message->email = $all['all']['email'];
+               $message->subject = $all['all']['subject'];
+               $message->address = $all['all']['address'];
+               $message->message = $all['all']['message'];
                //$message->file = $fullname ?? '';
 
                if ($message->save()) {

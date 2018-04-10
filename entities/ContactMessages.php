@@ -3,6 +3,7 @@
 namespace abdualiym\contactform\entities;
 
 use abdualiym\contactform\Module;
+use backend\entities\User;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 
@@ -45,6 +46,19 @@ class ContactMessages extends \yii\db\ActiveRecord
             'address' => Yii::t('contactform', 'Address'),
             'subject' => Yii::t('contactform', 'Subject'),
         ];
+    }
+    public function CreatedBy($id)
+    {
+        if($user = User::find()->where(['id' => $id])->one()){
+            return $user ? $user->username : '';
+        }
+    }
+
+
+    public function ReplyMessage($id){
+        if($message = ReplyMessage::find()->where(['message_id' => $id])->all()){
+            return $message ? $message : '';
+        }
     }
 
     public function behaviors(): array
