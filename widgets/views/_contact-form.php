@@ -17,7 +17,7 @@ use yii\widgets\ActiveForm;
         <div class="col-md-6"><?= $text->value(9, 'latitude');?></div>
     </div></br>
     <div class="contact-form">
-        <div class="section-title"><?= Yii::t('contactform', 'Feedback'); ?></div>
+        <!--<div class="section-title"><?/*= Yii::t('contactform', 'Feedback'); */?></div>-->
 
         <?php $form = ActiveForm::begin(['id' => 'callbackForm']); ?>
 
