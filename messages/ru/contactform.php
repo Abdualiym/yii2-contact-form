@@ -6,6 +6,7 @@ return [
     'Reply user message: {nameAttribute}' => 'Ответьте на сообщение пользователя: {nameAttribute}',
     'Reply message' => 'Ответное сообщение',
     'Reply' => 'Ответить',
+    'Actions' => 'Действия',
     'View' => 'Посмотреть',
     'Thank you for your message! Your message will be considered soon.' => 'Спасибо за ваше обращение! Ваше сообщение будет рассмотрено в ближайшее время.',
     'Your message has been successfully sent!' => 'Ваше сообщение было успешно отправлено',
