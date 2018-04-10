@@ -21,7 +21,8 @@ $this->params['breadcrumbs'][] = Yii::t('contactform', 'Reply');
         <?= $form->field($model, 'message_id')->hiddenInput(['value' => $data->id])->label(false) ?>
         <?= $form->field($model, 'user_email')->textInput(['value' => $data->email, 'readonly'=> true])->label(false) ?>
         <br>
-        <span><?= Yii::t('contactform', 'Message')?></span>
+        <span><?= Yii::t('contactform', 'Message text')?></span>
+
         <blockquote><?= $data->message; ?></blockquote>
 
         <div class="form-group">

@@ -3,6 +3,7 @@
 return [
     // site helpers
     'Created at' => 'Дата добавления',
+    'Created at' => 'Дата добавления',
     'Updated at' => 'Дата обновления',
     'Created by' => 'Создаль',
     'Updated by' => 'Обновиль',

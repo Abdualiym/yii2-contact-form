@@ -51,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="box box-default">
 
-        <div class="box-header with-border"><?= Yii::t('contactform', 'Reply to: {nameAttribute}', ['nameAttribute' => $model->email ]) ?></div>
+        <div class="box-header with-border"><?= Yii::t('contactform', 'Reply message') ?></div>
 
         <div class="box-body">
             <!-- Nav tabs -->
