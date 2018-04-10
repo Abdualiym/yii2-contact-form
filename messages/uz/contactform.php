@@ -4,6 +4,8 @@ return [
     // site helpers
     'Reply user message: {nameAttribute}' => 'Foydalanuvchi murojaatiga javob: {nameAttribute}',
     'View' => 'Ko`rish',
+    'Delete' => 'O`chirish',
+    'Are you sure you want to delete this message?' => 'Ushbu xabarni o`chirmoqchimisiz?',
     'Actions' => 'Harakatlar',
     'Reply message' => 'Murojaat javobi',
     'Reply' => 'Javob berish',

@@ -6,6 +6,8 @@ return [
     'Reply user message: {nameAttribute}' => 'Ответьте на сообщение пользователя: {nameAttribute}',
     'Reply message' => 'Ответное сообщение',
     'Reply' => 'Ответить',
+    'Delete' => 'Удалить',
+    'Are you sure you want to delete this message?' => 'Вы уверены, что хотите удалить это сообщение?',
     'Actions' => 'Действия',
     'View' => 'Посмотреть',
     'Thank you for your message! Your message will be considered soon.' => 'Спасибо за ваше обращение! Ваше сообщение будет рассмотрено в ближайшее время.',
