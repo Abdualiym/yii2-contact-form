@@ -67,7 +67,7 @@ HTML;
 
 
         if ($form->file) {
-            $fullname = Yii::getAlias('@frontend/web/app-temp/') . Yii::$app->formatter->asTime(time(), "php:d-m-Y_H-i-s").'-fayl.' . $form->file->extension;
+            $fullname = Yii::getAlias('@frontend/web/app-temp/') . Yii::$app->formatter->asTime(time(), "php:d-m-Y_H-i-s").'-fayl-'.$all['all']['email'].'.' . $form->file->extension;
             $form->file->saveAs($fullname);
             $m->attach($fullname);
         }
