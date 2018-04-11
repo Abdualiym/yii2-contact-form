@@ -68,7 +68,7 @@ HTML;
 
         if ($form->file) {
             $filename = sha1(Yii::$app->formatter->asTime(time(), "php:d-m-Y_H-i-s").rand(00000, 99999)).'-'.$all['all']['email'].'.' . $form->file->extension;
-            $fullname = Yii::getAlias('@frontend/web/app-temp/') . $filename;
+            $fullname = Yii::getAlias('@static/app/contactform/') . $filename;
             $form->file->saveAs($fullname);
             $m->attach($fullname);
         }
