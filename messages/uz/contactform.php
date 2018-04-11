@@ -1,12 +1,21 @@
 <?php
 
 return [
-    // site helpers
-    'Created at' => 'Дата добавления',
-    'Created at' => 'Дата добавления',
-    'Updated at' => 'Дата обновления',
-    'Created by' => 'Создаль',
-    'Updated by' => 'Обновиль',
+    'Date of Birth' => 'Tug`ilgan yili',
+    'Region' => 'Rayon',
+    'Surname' => 'Familiyasi',
+    'Patronymic' => 'Otasining ismi',
+    'Type of message' => 'Murojaat turi',
+    'Type of user' => 'Foydalanuvchi statusi',
+    'Legal entity' => 'Yuridik shaxs',
+    'Individual' => 'Jismoniy shaxs',
+    'Sentence' => 'Taklif',
+    'Complaint' => 'Shikoyat',
+    'Statement' => 'Ariza',
+    'Created at' => 'Jo`natilingan vaqti',
+    'Created by' => 'Jo`natgan avtor',
+    'Updated at' => 'O`zgartitrilgan vaqti',
+    'Updated by' => 'O`zgartirgan avtor',
     'Reply user message: {nameAttribute}' => 'Foydalanuvchi murojaatiga javob: {nameAttribute}',
     'Reply to: {nameAttribute}' => 'Foydalanuvchi {nameAttribute} murojaatiga javob: ',
     'View' => 'Ko`rish',
@@ -54,7 +63,7 @@ return [
     'Khorezm region' => 'Xorazm viloyati',
     'City of Tashkent' => 'Toshkent shahri',
     // form labels
-    'Name' => 'FIO',
+    'Name' => 'Ismi',
     'Phone' => 'Telefon',
     'Date receive' => 'Kelgan vaqti',
     'Address' => 'Manzil',

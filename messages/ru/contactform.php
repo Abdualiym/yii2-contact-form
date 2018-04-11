@@ -1,7 +1,17 @@
 <?php
 
 return [
-    # site helpers
+    'Date of Birth' => 'Дата рождения',
+    'Region' => 'Район',
+    'Surname' => 'Фамилия',
+    'Patronymic' => 'Отчество',
+    'Type of message' => 'Тип обращения',
+    'Type of user' => 'Вид лица',
+    'Individual' => 'Физическое',
+    'Legal entity' => 'Юридическое лицо',
+    'Sentence' => 'Предложение',
+    'Complaint' => 'Жалоба',
+    'Statement' => 'Заявление',
     'Created at' => 'Yaratilgan vaqti',
     'Updated at' => 'Yangilangan vaqt',
     'Created by' => 'Kim tomonidan yaratildi',
@@ -16,7 +26,7 @@ return [
     'View' => 'Посмотреть',
     'Thank you for your message! Your message will be considered soon.' => 'Спасибо за ваше обращение! Ваше сообщение будет рассмотрено в ближайшее время.',
     'Your message has been successfully sent!' => 'Ваше сообщение было успешно отправлено',
-    'Name' => 'ФИО',
+    'Name' => 'Имя',
     'Status' => 'Статус',
     'Contacts' => 'Контакты',
     'Feedback' => 'Обратная связь',

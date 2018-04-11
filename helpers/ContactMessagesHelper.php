@@ -8,7 +8,6 @@ use yii\helpers\Html;
 
 class ContactMessagesHelper
 {
-
     public static function statusList(): array
     {
         return [
@@ -17,6 +16,33 @@ class ContactMessagesHelper
             ContactMessages::STATUS_ARCHIVE => \Yii::t('contactform', 'Archive'),
             ContactMessages::STATUS_ARCHIVE => \Yii::t('contactform', 'Read'),
         ];
+    }
+
+    public static function type_user_List(): array
+    {
+        return [
+            ContactMessages::TYPE_USER_INDIVIDUAL => \Yii::t('contactform', 'Individual'),
+            ContactMessages::TYPE_USER_LEGAL => \Yii::t('contactform', 'Legal entity'),
+        ];
+    }
+
+    public static function type_appeal_List(): array
+    {
+        return [
+            ContactMessages::TYPE_APPEAL_SENTENCE => \Yii::t('contactform', 'Sentence'),
+            ContactMessages::TYPE_APPEAL_COMPLAINT => \Yii::t('contactform', 'Complaint'),
+            ContactMessages::TYPE_APPEAL_STATEMENT => \Yii::t('contactform', 'Statement'),
+        ];
+    }
+
+    public static function type_appeal_Name($type_appeal): string
+    {
+        return ArrayHelper::getValue(self::type_appeal_List(), $type_appeal);
+    }
+
+    public static function type_user_Name($type_user): string
+    {
+        return ArrayHelper::getValue(self::type_user_List(), $type_user);
     }
 
     public static function statusName($status): string
@@ -47,6 +73,46 @@ class ContactMessagesHelper
             'width' => '30',
             'src' => $class,
 
+        ]);
+    }
+
+    public static function type_appeal_Label($type_appeal): string
+    {
+        switch ($type_appeal) {
+            case ContactMessages::TYPE_APPEAL_SENTENCE:
+                $class = 'label label-default';
+                break;
+            case ContactMessages::TYPE_APPEAL_COMPLAINT:
+                $class = 'label label-default';
+                break;
+            case ContactMessages::TYPE_APPEAL_STATEMENT:
+                $class = 'label label-default';
+                break;
+
+            default:
+                $class = 'label label-default';
+        }
+
+        return Html::tag('label', ArrayHelper::getValue(self::typeList(), $type_appeal), [
+            'class' => $class,
+        ]);
+    }
+    public static function type_user_Label($type_appeal): string
+    {
+        switch ($type_appeal) {
+            case ContactMessages::TYPE_USER_INDIVIDUAL:
+                $class = 'label label-default';
+                break;
+            case ContactMessages::TYPE_USER_LEGAL:
+                $class = 'label label-default';
+                break;
+
+            default:
+                $class = 'label label-default';
+        }
+
+        return Html::tag('label', ArrayHelper::getValue(self::typeList(), $type_appeal), [
+            'class' => $class,
         ]);
     }
 }

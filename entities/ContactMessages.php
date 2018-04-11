@@ -25,6 +25,15 @@ class ContactMessages extends \yii\db\ActiveRecord
     const STATUS_NEW = 1;
     const STATUS_ARCHIVE = 2;
     const STATUS_READ = 3;
+
+    const TYPE_APPEAL_SENTENCE = 1;
+    const TYPE_APPEAL_COMPLAINT = 2;
+    const TYPE_APPEAL_STATEMENT = 3;
+
+    const TYPE_USER_INDIVIDUAL = 1;
+    const TYPE_USER_LEGAL = 2;
+
+
     /**
      * @inheritdoc
      */

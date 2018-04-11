@@ -2,6 +2,7 @@
 
 namespace abdualiym\contactform\forms;
 
+use abdualiym\contactform\helpers\ContactMessagesHelper;
 use abdualiym\contactform\Module;
 use yii\base\Model;
 use Yii;
@@ -9,6 +10,12 @@ use Yii;
 class ContactForm extends Model
 {
     public $name;
+    public $surname;
+    public $patronymic;
+    public $type_user;
+    public $type_appeal;
+    public $region;
+    public $date_birth;
     public $phone;
     public $email;
     public $address;
@@ -22,9 +29,39 @@ class ContactForm extends Model
 
 
         return [
-            ['name', 'required', 'when' => function($model) {
+            ['fio', 'required', 'when' => function($model) {
                 if(Yii::$app->controller->module->nameRequired){
                     return $this->validateAttributeMessage($model->name);
+                }
+            }],
+            ['surname', 'required', 'when' => function($model) {
+                if(Yii::$app->controller->module->surnameRequired){
+                    return $this->validateAttributeMessage($model->surname);
+                }
+            }],
+            ['patronymic', 'required', 'when' => function($model) {
+                if(Yii::$app->controller->module->patronymicRequired){
+                    return $this->validateAttributeMessage($model->patronymic);
+                }
+            }],
+            ['type_user', 'required', 'when' => function($model) {
+                if(Yii::$app->controller->module->type_userRequired){
+                    return $this->validateAttributeMessage($model->type_user);
+                }
+            }],
+            ['type_appeal', 'required', 'when' => function($model) {
+                if(Yii::$app->controller->module->type_appealRequired){
+                    return $this->validateAttributeMessage($model->type_appeal);
+                }
+            }],
+            ['region', 'required', 'when' => function($model) {
+                if(Yii::$app->controller->module->regionRequired){
+                    return $this->validateAttributeMessage($model->region);
+                }
+            }],
+            ['date_birth', 'required', 'when' => function($model) {
+                if(Yii::$app->controller->module->date_birthRequired){
+                    return $this->validateAttributeMessage($model->date_birth);
                 }
             }],
             ['phone', 'required', 'when' => function($model) {
@@ -78,11 +115,28 @@ class ContactForm extends Model
         return empty($model->$attributeName)? true : false;
     }
 
+
+    public function type_appeal_list(): array
+    {
+        return ContactMessagesHelper::type_appeal_List();
+    }
+
+    public function type_user_list(): array
+    {
+        return ContactMessagesHelper::type_user_List();
+    }
+
     public function attributeLabels()
     {
         return [
             'name' => Yii::t('contactform', 'Name'),
             'address' => Yii::t('contactform', 'Address'),
+            'date_birth' => Yii::t('contactform', 'Date of Birth'),
+            'surname' => Yii::t('contactform', 'Surname'),
+            'patronymic' => Yii::t('contactform', 'Patronymic'),
+            'region' => Yii::t('contactform', 'Region'),
+            'type_user' => Yii::t('contactform', 'Type of user'),
+            'type_appeal' => Yii::t('contactform', 'Type of message'),
             'phone' => Yii::t('contactform', 'Phone'),
             'email' => Yii::t('contactform', 'E-mail address'),
             'subject' => Yii::t('contactform', 'Subject'),
