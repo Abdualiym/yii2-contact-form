@@ -67,7 +67,8 @@ HTML;
 
 
         if ($form->file) {
-            $fullname = Yii::getAlias('@frontend/web/app-temp/') . Yii::$app->formatter->asTime(time(), "php:d-m-Y_H-i-s").'-fayl-'.$all['all']['email'].'.' . $form->file->extension;
+            $filename = sha1(Yii::$app->formatter->asTime(time(), "php:d-m-Y_H-i-s").rand(00000, 99999)).'-'.$all['all']['email'].'.' . $form->file->extension;
+            $fullname = Yii::getAlias('@frontend/web/app-temp/') . $filename;
             $form->file->saveAs($fullname);
             $m->attach($fullname);
         }
@@ -76,22 +77,21 @@ HTML;
         if (!$m->send()) {
             throw new \RuntimeException(Yii::t('contactform', 'Sending message to branch email error.'));
         }
-
-
                $message = new ContactMessages();
                $message->status = $message::STATUS_NEW;
                $message->name = $all['all']['name'];
+               $message->region = $all['all']['region'];
                $message->surname = $all['all']['surname'];
                $message->patronymic = $all['all']['patronymic'];
                $message->type_user = $all['all']['type_user'];
                $message->type_appeal = $all['all']['type_appeal'];
-               //$message->date_birth = $all['all']['date_birth'];
+               $message->date_birth = $all['all']['date_birth'];
                $message->phone = $all['all']['phone'];
                $message->email = $all['all']['email'];
                $message->subject = $all['all']['subject'];
                $message->address = $all['all']['address'];
                $message->message = $all['all']['message'];
-               //$message->file = $fullname ?? '';
+               $message->file = $filename ?? '';
 
                if ($message->save()) {
 
@@ -112,4 +112,5 @@ HTML;
                    }
                }
     }
+
 }
