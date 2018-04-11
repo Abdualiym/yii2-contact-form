@@ -141,8 +141,8 @@ class ContactForm extends Model
             'phone' => Yii::t('contactform', 'Phone'),
             'email' => Yii::t('contactform', 'E-mail address'),
             'subject' => Yii::t('contactform', 'Subject'),
+            'file' => Yii::t('contactform', 'Attach file'),
             'message' => Yii::t('contactform', 'Message text'),
-            'file' => Yii::t('contactform', 'File'),
             'verifyCode' => Yii::t('contactform', 'Protection from automatic messages')
         ];
     }

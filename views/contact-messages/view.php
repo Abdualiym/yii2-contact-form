@@ -24,28 +24,67 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'name',
+            [
+                'attribute' => 'name',
+                'format' => 'text',
+                'label' => Yii::t('contactform', 'Name')
+            ],
+            [
+                'attribute' => 'surname',
+                'format' => 'text',
+                'label' => Yii::t('contactform', 'Surname')
+            ],
+            [
+                'attribute' => 'patronymic',
+                'format' => 'text',
+                'label' => Yii::t('contactform', 'Patronymic')
+            ],
             'email',
+            [
+                'attribute' => 'region',
+                'format' => 'text',
+                'label' => Yii::t('contactform', 'Region')
+            ],
+            [
+                'attribute' => 'address',
+                'format' => 'text',
+                'label' => Yii::t('contactform', 'Address')
+            ],
+            [
+                'attribute' => 'type_user',
+                'format' => 'text',
+                'label' => Yii::t('contactform', 'Type of user')
+            ],
+            [
+                'attribute' => 'type_appeal',
+                'format' => 'text',
+                'label' => Yii::t('contactform', 'Type of message')
+            ],
+            [
+                'attribute' => 'date_birth',
+                'format' => 'date',
+                'label' => Yii::t('contactform', 'Created at')
+            ],
             [
                 'attribute' => 'created_at',
                 'format' => 'datetime',
-                'label' => Yii::t('app', 'Created At')
+                'label' => Yii::t('contactform', 'Created at')
             ],
             [
                 'attribute' => 'updated_at',
                 'format' => 'datetime',
-                'label' => Yii::t('app', 'Updated At')
+                'label' => Yii::t('contactform', 'Updated at')
             ],
             [
                 'attribute' => 'subject',
                 'format' => 'text',
-                'label' => Yii::t('app', 'Subject')
+                'label' => Yii::t('contactform', 'Subject')
             ],
             [
                 'attribute' => 'message',
                 'format' => 'text',
-                'label' => Yii::t('app', 'Message text')
-            ],
+                'label' => Yii::t('contactform', 'Message text')
+            ]
         ],
     ]) ?>
 
@@ -55,7 +94,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <div class="box-body">
             <!-- Nav tabs -->
-            <?php foreach ($model->replyMessage($model->id) as $item): ?>
+            <?php
+            if($messages = $model->replyMessage($model->id)):
+            foreach ($messages as $item): ?>
             <span>
                 <?= Yii::t('contactform', 'Created by')?>
                 :
@@ -69,7 +110,9 @@ $this->params['breadcrumbs'][] = $this->title;
             </span>
                 <br>
             <blockquote><?= $item->message; ?></blockquote>
-            <?php endforeach; ?>
+            <?php endforeach;
+            endif;
+            ?>
         </div>
     </div>
 </div>

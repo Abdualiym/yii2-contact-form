@@ -3,6 +3,7 @@
 return [
     'Date of Birth' => 'Tug`ilgan yili',
     'Region' => 'Rayon',
+    'Attach file' => 'Fayl yuklash',
     'Surname' => 'Familiyasi',
     'Patronymic' => 'Otasining ismi',
     'Type of message' => 'Murojaat turi',
