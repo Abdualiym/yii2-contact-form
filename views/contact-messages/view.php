@@ -84,7 +84,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'message',
                 'format' => 'text',
                 'label' => Yii::t('contactform', 'Message text')
-            ]
+            ],
+            [
+                'attribute'=>'file',
+                'label' => Yii::t('contactform', 'Attach file'),
+                'format'=>'raw',
+                'value'=>'<a class="fa fa-file" href="'.\yii\helpers\Url::to(Yii::$app->params['staticHostInfo'].'/app/contactform/'.$model->file).'"> Файл</a>',
+            ],
+
         ],
     ]) ?>
 
