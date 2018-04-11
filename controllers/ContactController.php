@@ -8,6 +8,7 @@ use Yii;
 use yii\base\ViewContextInterface;
 use yii\helpers\VarDumper;
 use yii\web\Controller;
+use yii\web\UploadedFile;
 
 /**
  * Default controller for the `contact` module
@@ -34,8 +35,11 @@ class   ContactController extends Controller implements ViewContextInterface
         //VarDumper::dump(Yii::$app->request->post(), 10, true);die();
         $form = new ContactForm();
         if ($form->load(Yii::$app->request->post()) && $form->validate()) {
+            $form->file = UploadedFile::getInstance($form, 'file');
             try {
+                //VarDumper::dump($form->file, 10, true); die();
                 $this->service->send($form);
+
                 Yii::$app->session->setFlash('success', Yii::t('contactform', 'Thank you! Your application is accepted!'));
             } catch (\Exception $e) {
                 Yii::$app->errorHandler->logException($e);

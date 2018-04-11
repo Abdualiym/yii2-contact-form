@@ -17,4 +17,10 @@ class Module extends \yii\base\Module
     public $verifyCodeRequired = true;
     public $subjectRequired = true;
     public $addressRequired = true;
+    public $surnameRequired = true;
+    public $patronymicRequired = true;
+    public $type_userRequired = true;
+    public $type_appealRequired = true;
+    public $regionRequired = true;
+    public $date_birthRequired = true;
 }

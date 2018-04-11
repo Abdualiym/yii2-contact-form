@@ -6,6 +6,7 @@ use abdualiym\contactform\helpers\ContactMessagesHelper;
 use abdualiym\contactform\Module;
 use yii\base\Model;
 use Yii;
+use yii\web\UploadedFile;
 
 class ContactForm extends Model
 {
@@ -29,7 +30,7 @@ class ContactForm extends Model
 
 
         return [
-            ['fio', 'required', 'when' => function($model) {
+            ['name', 'required', 'when' => function($model) {
                 if(Yii::$app->controller->module->nameRequired){
                     return $this->validateAttributeMessage($model->name);
                 }
@@ -102,7 +103,7 @@ class ContactForm extends Model
             [
                 'file', 'file', 'skipOnEmpty' => true, // file NOT REQUIRED
                 'extensions' => ['zip', 'rar', 'pdf'],
-                'checkExtensionByMimeType' => true, // Force for check file by "magic" bytes
+                //'checkExtensionByMimeType' => true, // Force for check file by "magic" bytes
                 'maxFiles' => 1,
                 'maxSize' => 10 * 1024 * 1024 // 10 MB
             ],
